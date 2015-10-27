@@ -1,0 +1,12 @@
+.main-page-image {
+    margin: auto;
+    display: table;
+}
+
+.btn {
+    border-radius: 0px;
+}
+
+.jumbotron {
+  font: 5em;
+}

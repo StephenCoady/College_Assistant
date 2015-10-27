@@ -1,0 +1,43 @@
+{
+  "records": [
+    {
+        "firstName":"Stephen",
+        "secondName":"Coady",
+        "username":"admin",
+        "password":"admin",
+        "age":"26",
+        "modules":[
+          "Programming",
+          "Maths",
+          "Programming 2",
+          "Component Development"
+        ]
+    },
+    {
+        "firstName":"Dennis",
+        "secondName":"O'Brien",
+        "username":"dobr",
+        "password":"dobr",
+        "age":"52",
+        "modules":[
+          "Business",
+          "Accounting",
+          "Law",
+          "Economics"
+        ]
+    },
+    {
+        "firstName":"Johnny",
+        "secondName":"O'Brien",
+        "username":"dobr",
+        "password":"dobr",
+        "age":"52",
+        "modules":[
+          "Business",
+          "Accounting",
+          "Law",
+          "Economics"
+        ]
+    }
+  ]
+}

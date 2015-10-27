@@ -1,125 +1,59 @@
 <!DOCTYPE html>
-<html lang="en">
+<html ng-app="collegeApp" ng-controller="myCtrl">
+
+<head>
+  <meta charset="utf-8">
+  <title>
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link href="../styles/bootstrap.min.css" rel="stylesheet">
+  <link href="../styles/custom.css" rel="stylesheet" type="text/css">
+  <script src="../support/scripts/jquery.min.js"></script>
+  <script src="../support/scripts/bootstrap.min.js"></script>
   
-  <head>
-    <meta charset="utf-8">
-    <title>
-    </title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link href="../styles/bootstrap.min.css"
-    rel="stylesheet">
-    <link href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"
-    rel="stylesheet">
-  </head>
-  
-  <body>
-    <div class="container">
-      <nav class="navbar navbar-default" role="navigation">
-        <div class="navbar-header">
-          <a class="navbar-brand" href="#">College Assistant</a>
-        </div>
-        <div class="collapse navbar-collapse navbar-ex1-collapse">
-          <ul class="nav navbar-nav">
-            <li class="active">
-              <a href="#">Home</a>
-            </li>
-            <li>
-              <a href="#">Link</a>
-            </li>
-            <li>
-              <a href="#">Link</a>
-            </li>
-          </ul>
-        </div>
-      </nav>
-      <div class="row">
-        <div class="col-md-4">
-          <h3>
-            What is College Assistant?
-          </h3>
-          <p>
-            Bla bla bla bla bla bla bla bla bla bla
-          </p>
-        </div>
-        <div class="col-md-8">
-          <img src="https://s3.amazonaws.com/jetstrap-site/images/website/index/what_icon.png"
-          width="300">
-        </div>
+</head>
+
+<body>
+  <div class="container">
+    <nav class="navbar navbar-default" role="navigation">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">College Assistant</a>
       </div>
-      <div class="row">
-        <div class="col-md-4">
-          <h3>
-            Span 3
-          </h3>
-          <div class="panel panel-default">
-            <div class="panel-heading">
-              <h3 class="panel-title">
-                Panel title
-              </h3>
-            </div>
-            <div class="panel-body">
-              Panel content
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <h3>
-            Span 3
-          </h3>
-          <div class="panel panel-default">
-            <div class="panel-heading">
-              <h3 class="panel-title">
-                Panel title
-              </h3>
-            </div>
-            <div class="panel-body">
-              Panel content
-            </div>
-          </div>
-        </div>
-        <div class="col-md4 col-md-4" style="display: block;">
-        </div>
-        <div class="col-md-4">
-          <h3>
-            Span 4
-          </h3>
-          <div class="panel panel-default">
-            <div class="panel-heading">
-              <h3 class="panel-title">
-                Panel title
-              </h3>
-            </div>
-            <div class="panel-body">
-              Panel content
-            </div>
-          </div>
-        </div>
+      <div class="collapse navbar-collapse navbar-ex1-collapse">
+        <ul class="nav navbar-nav">
+          <li>
+            <a ng-if="user.role==='public'" href="#/login" class = "btn btn-link">Log In</a>
+          </li>
+          <li>
+            <a ng-if="user.role==='public'" href="#/signup" class = "btn btn-link">Sign up</a>
+          </li>
+          <li>
+            <a ng-if="user.role==='admin'" href="#/dashboard" class = "btn btn-link">Dashboard</a>
+          </li>
+          <li>
+            <a ng-if="user.role==='admin'" ng-click="logout()" href="#/" class = "btn btn-link">Log Out</a>
+          </li>
+        </ul>
       </div>
-      <div class="row">
-      </div>
-      <div class="jumbotron">
-        <h3>
-          Hello, World!
-        </h3>
-        <p>
-          <a class="btn btn-primary btn-sm" href="#">Learn more</a>
-        </p>
-      </div>
+    </nav>
+
+    <div ng-view >
+
     </div>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"
-    >
-    </script>
-    <script src="../support/bootstrap.min.js"
-    >
-    </script>
+    
     <div class="row">
     </div>
-    <div class="row">
+    <div class="jumbotron">
+      <p>
+        Page developed by Stephen Coady
+      </p>
     </div>
-    <div class="row">
-    </div>
-  </body>
+  </div>
+  <script src="../support/scripts/angular.min.js"></script>
+  <script src="../support/scripts/angular-route.min.js"></script>
+  <script src="app.js"></script>
+</body>
 
 </html>
