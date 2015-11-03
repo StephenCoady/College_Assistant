@@ -10,3 +10,8 @@
 .jumbotron {
   font: 5em;
 }
+
+.navbar .navbar-right {
+  float: right;
+  margin-right: 10px;
+  }

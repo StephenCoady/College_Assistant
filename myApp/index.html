@@ -16,44 +16,36 @@
 </head>
 
 <body>
-  <div class="container">
+  <script src="../support/scripts/angular.min.js"></script>
+  <script src="../support/scripts/angular-route.min.js"></script>
+  <script src="app.js"></script>
+
+
+<div class="container">
     <nav class="navbar navbar-default" role="navigation">
       <div class="navbar-header">
         <a class="navbar-brand" href="#">College Assistant</a>
       </div>
-      <div class="collapse navbar-collapse navbar-ex1-collapse">
-        <ul class="nav navbar-nav">
-          <li>
-            <a ng-if="user.role==='public'" href="#/login" class = "btn btn-link">Log In</a>
-          </li>
-          <li>
-            <a ng-if="user.role==='public'" href="#/signup" class = "btn btn-link">Sign up</a>
-          </li>
-          <li>
-            <a ng-if="user.role==='admin'" href="#/dashboard" class = "btn btn-link">Dashboard</a>
-          </li>
-          <li>
-            <a ng-if="user.role==='admin'" ng-click="logout()" href="#/" class = "btn btn-link">Log Out</a>
-          </li>
-        </ul>
-      </div>
+        <nav class="nav navbar-nav navbar-left">
+          <li><a ng-if="!loggedIn" href="#/login" class = "btn btn-link">Log In</a></li>
+          <li><a ng-if="!loggedIn" href="#/signup" class = "btn btn-link">Sign up</a></li>
+          <li> <a ng-if="loggedIn" href="#/dashboard" class = "btn btn-link">Dashboard</a></li>
+        </nav>
+        <nav class ="nav navbar-nav navbar-right">
+          <li ng-if="loggedIn" ><a ng-click="logout()" href="#/" class = "btn btn-link">Log Out</a></li>
+        </nav>
     </nav>
 
     <div ng-view >
-
+    <!-- Dynamic page content goes here -->
     </div>
     
-    <div class="row">
-    </div>
     <div class="jumbotron">
       <p>
         Page developed by Stephen Coady
       </p>
     </div>
   </div>
-  <script src="../support/scripts/angular.min.js"></script>
-  <script src="../support/scripts/angular-route.min.js"></script>
-  <script src="app.js"></script>
 </body>
 
 </html>

@@ -1,0 +1,215 @@
+[
+  {
+    "firstName":"Stephen",
+    "secondName":"Coady",
+    "email":"scoady2@gmail.com",
+    "username":"admin",
+    "password":"admin",
+    "age":"26",
+    "modules":
+    [
+      {
+          "title":"Programming",
+          "assignments":[
+                           {
+                            "title":"Program",
+                            "snippet":"Big Assignment",
+                            "date":"10/01/1901",
+                            "id":1
+                          },
+                          {
+                            "title":"GUI",
+                            "snippet":"Medium Assignment",
+                            "date":"10/01/2001",
+                            "id":2
+                          },
+                          {
+                            "title":"Spec",
+                            "snippet":"Small Assignment",
+                            "date":"10/01/1801",
+                            "id":3
+                          }
+                        ],
+          "Lecturer": "Mr Programmer"
+      },
+      {
+          "title":"Maths",
+          "assignments":[
+                           {
+                            "title":"Test",
+                            "snippet":"Big Assignment",
+                            "date":"10/01/1901",
+                            "id":1
+                          },
+                          {
+                            "title":"Problems",
+                            "snippet":"Medium Assignment",
+                            "date":"10/01/2001",
+                            "id":2
+                          },
+                          {
+                            "title":"Project",
+                            "snippet":"Small Assignment",
+                            "date":"10/01/1801",
+                            "id":3
+                          }
+                          ],
+          "Lecturer": "Mr Mathematician"
+      },
+      {
+          "title":"Programming 2",
+          "assignments":[
+                           {
+                            "title":"Algorithm Exam",
+                            "snippet":"Big Assignment",
+                            "date":"10/01/1901",
+                            "id":1
+                          },
+                          {
+                            "title":"Data Structures",
+                            "snippet":"Medium Assignment",
+                            "date":"10/01/2001",
+                            "id":2
+                          },
+                          {
+                            "title":"Exam",
+                            "snippet":"Small Assignment",
+                            "date":"10/01/1801",
+                            "id":3
+                          }
+                          ],
+          "Lecturer": "Mr Programmer 2"
+      },
+      {
+          "title":"Component Development",
+          "assignments":[
+                          {
+                            "title":"SPA",
+                            "snippet":"Big Assignment",
+                            "date":"10/01/1901",
+                            "id":1
+                          },
+                          {
+                            "title":"SPA & Backend",
+                            "snippet":"Medium Assignment",
+                            "date":"10/01/2001",
+                            "id":2
+                          },
+                          {
+                            "title":"Test",
+                            "snippet":"Small Assignment",
+                            "date":"10/01/1801",
+                            "id":3
+                          }
+                          ],
+          "Lecturer": "Diarmuid O'Connor"
+      }
+    ]
+  },
+  {
+    "firstName":"Dennis",
+    "secondName":"O'Brien",
+    "email":"email@email.com",
+    "username":"dobr",
+    "password":"dobr",
+    "age":"52",
+    "modules":
+    [
+      {
+          "title":"Business",
+          "assignments":[
+                          {
+                            "title":"Assignment 1",
+                            "snippet":"Big Assignment",
+                            "date":"10/01/1901"
+                          },
+                          {
+                            "title":"Assignment 2",
+                            "snippet":"Medium Assignment",
+                            "date":"10/01/2001"
+                          },
+                          {
+                            "title":"Assignment 3",
+                            "snippet":"Small Assignment",
+                            "date":"10/01/1801"
+                          }
+                        ],
+          "Lecturer": "Mr Programmer"
+      },
+      {
+          "title":"Law",
+          "assignments":[
+                           "Assignment 1",
+                           "Assignment 2",
+                           "Assignment 3"
+                          ],
+          "Lecturer": "Mr Mathematician"
+      },
+      {
+          "title":"Politics",
+          "assignments":[
+                           "Assignment 1",
+                           "Assignment 2",
+                           "Assignment 3"
+                          ],
+          "Lecturer": "Mr Programmer 2"
+      },
+      {
+          "title":"Economics",
+          "assignments":[
+                           "Assignment 1",
+                           "Assignment 2",
+                           "Assignment 3"
+                          ],
+          "Lecturer": "Diarmuid O'Connor"
+      }
+    ]
+  },
+  {
+    "firstName":"Johnny",
+    "secondName":"O'Brien",
+    "email":"email2@email2.com",
+    "username":"jobr",
+    "password":"jobr",
+    "age":"52",
+    "modules":
+    [
+      {
+          "title":"Economics I",
+          "Assignments":[
+                           "Assignment 1",
+                           "Assignment 2",
+                           "Assignment 3"
+                          ],
+          "Lecturer": "Diarmuid O'Connor"
+      },
+      {
+          "title":"Economics II",
+          "Assignments":[
+                           "Assignment 1",
+                           "Assignment 2",
+                           "Assignment 3"
+                          ],
+          "Lecturer": "Diarmuid O'Connor"
+      },
+      {
+          "title":"Economics III",
+          "Assignments":[
+                           "Assignment 1",
+                           "Assignment 2",
+                           "Assignment 3"
+                          ],
+          "Lecturer": "Diarmuid O'Connor"
+      },
+      {
+          "title":"Economics IV",
+          "Assignments":[
+                           "Assignment 1",
+                           "Assignment 2",
+                           "Assignment 3"
+                          ],
+          "Lecturer": "Diarmuid O'Connor"
+      }
+    ]
+  }
+]
