@@ -1,7 +1,7 @@
 var app = angular.module('collegeApp', ['ngRoute'])
 
 app.config(['$routeProvider',
-      function($routeProvider, $rootScope) {
+      function ($routeProvider, $rootScope) {
         $routeProvider
           .when('/', {
             templateUrl: './partials/landing.html'
@@ -9,6 +9,28 @@ app.config(['$routeProvider',
           .when('/login', {
             templateUrl: './partials/login.html',
             controller: "loginCtrl"
+          })
+          .when('/modules/:moduleId', {
+            resolve: {
+              "check": function($location, $rootScope) {
+                if(!$rootScope.loggedIn){
+                  $location.path('/');
+                }
+              }
+            },
+            templateUrl: './partials/module-detail.html',
+            controller: "moduleCtrl"
+          })
+          .when('/modules/:moduleId/:assignId', {
+            resolve: {
+              "check": function($location, $rootScope) {
+                if(!$rootScope.loggedIn){
+                  $location.path('/');
+                }
+              }
+            },
+            templateUrl: './partials/assign-detail.html',
+            controller: "assignCtrl"
           })
           .when('/signup', {
             templateUrl: './partials/signup.html',
@@ -139,19 +161,42 @@ app.controller('NewUserController', function($scope, NewUserService, $location, 
     $rootScope.username = $scope.user.username;
     $scope.user = new User({});
     $rootScope.loggedIn = true;
-    $location.path('/dashboard')
+    $location.path('/dashboard');
   }
 });
 
-function User(data) {
-  this.firstName = data.firstName || "",
-  this.secondName = data.secondName || "",
-  this.email = data.email || "",
-  this.username = data.username || "",
-  this.password = data.password || "",
-  this.age = data.age || "",
-  this.modules = data.modules || []
-}
+app.controller('moduleCtrl', function ($scope, $rootScope, $routeParams, UserService) {
+             var users = UserService.getUsers();
+             $scope.users = UserService.getUsers();
+              for (x in $scope.users){
+                 if ($scope.users[x].username === $rootScope.username){
+                    $scope.modules = $scope.users[x].modules;
+                    for (y in $scope.modules){
+                      if ($scope.modules[y].id === $routeParams.moduleId){
+                        $scope.module = $scope.modules[y]
+                        ;
+                      }
+                    }
+          }
+        }
+});
+
+app.controller('assignCtrl', function ($scope, $rootScope, $routeParams, UserService) {
+             var users = UserService.getUsers();
+             $scope.users = UserService.getUsers();
+              for (x in $scope.users){
+                 if ($scope.users[x].username === $rootScope.username){
+                    $scope.modules = $scope.users[x].modules;
+                    for (y in $scope.modules){
+                      if ($scope.modules[y].id === $routeParams.moduleId){
+                        $scope.assignments = $scope.modules[y].assignments;
+                        $scope.module = $scope.modules[y];
+                        $scope.assignment = $scope.assignments[$routeParams.assignId-1];
+                      }
+                    }
+          }
+        }
+});
 
 app.factory('UserService', ['$http' , function($http){
             var users = [];
@@ -162,8 +207,19 @@ app.factory('UserService', ['$http' , function($http){
                     })
             var api = {
                 getUsers : function() {
-                         return users;      
+                         return users;
                 }
             }
             return api
-        }])
+        }]);
+
+// user model
+function User(data) {
+  this.firstName = data.firstName || "",
+  this.secondName = data.secondName || "",
+  this.email = data.email || "",
+  this.username = data.username || "",
+  this.password = data.password || "",
+  this.age = data.age || "",
+  this.modules = data.modules || []
+}

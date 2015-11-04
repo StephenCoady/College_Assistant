@@ -9,97 +9,113 @@
     "modules":
     [
       {
+          "id":"1",
           "title":"Programming",
           "assignments":[
-                           {
+                          {
                             "title":"Program",
                             "snippet":"Big Assignment",
                             "date":"10/01/1901",
-                            "id":1
+                            "id":"1",
+                            "details":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse molestie nisl mi, ut porta libero sollicitudin vel. Maecenas sit amet euismod ipsum. Curabitur in eros auctor, pharetra est quis, bibendum dolor. Vivamus vel viverra dolor. Quisque at purus auctor, tincidunt risus vitae, feugiat libero. Integer auctor purus at eros vehicula blandit. Pellentesque vel erat leo. Sed lobortis dolor ac massa euismod, at aliquam mauris tincidunt. Proin dui massa, vestibulum nec ex id, eleifend dignissim mi. Sed at vehicula mi. Duis commodo malesuada lorem, vitae ultrices magna efficitur auctor. Phasellus quis euismod dui. Proin imperdiet ultrices velit, vel gravida nisi pretium eget. Fusce mollis dignissim ante, finibus dignissim metus."
                           },
                           {
                             "title":"GUI",
                             "snippet":"Medium Assignment",
                             "date":"10/01/2001",
-                            "id":2
+                            "id":"2",
+                            "details":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse molestie nisl mi, ut porta libero sollicitudin vel. Maecenas sit amet euismod ipsum. Curabitur in eros auctor, pharetra est quis, bibendum dolor. Vivamus vel viverra dolor. Quisque at purus auctor, tincidunt risus vitae, feugiat libero. Integer auctor purus at eros vehicula blandit. Pellentesque vel erat leo. Sed lobortis dolor ac massa euismod, at aliquam mauris tincidunt. Proin dui massa, vestibulum nec ex id, eleifend dignissim mi. Sed at vehicula mi. Duis commodo malesuada lorem, vitae ultrices magna efficitur auctor. Phasellus quis euismod dui. Proin imperdiet ultrices velit, vel gravida nisi pretium eget. Fusce mollis dignissim ante, finibus dignissim metus."
                           },
                           {
                             "title":"Spec",
                             "snippet":"Small Assignment",
                             "date":"10/01/1801",
-                            "id":3
+                            "id":"3",
+                            "details":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse molestie nisl mi, ut porta libero sollicitudin vel. Maecenas sit amet euismod ipsum. Curabitur in eros auctor, pharetra est quis, bibendum dolor. Vivamus vel viverra dolor. Quisque at purus auctor, tincidunt risus vitae, feugiat libero. Integer auctor purus at eros vehicula blandit. Pellentesque vel erat leo. Sed lobortis dolor ac massa euismod, at aliquam mauris tincidunt. Proin dui massa, vestibulum nec ex id, eleifend dignissim mi. Sed at vehicula mi. Duis commodo malesuada lorem, vitae ultrices magna efficitur auctor. Phasellus quis euismod dui. Proin imperdiet ultrices velit, vel gravida nisi pretium eget. Fusce mollis dignissim ante, finibus dignissim metus."
                           }
                         ],
           "Lecturer": "Mr Programmer"
       },
       {
+          "id":"2",
           "title":"Maths",
           "assignments":[
                            {
                             "title":"Test",
                             "snippet":"Big Assignment",
                             "date":"10/01/1901",
-                            "id":1
+                            "id":"1",
+                            "details":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse molestie nisl mi, ut porta libero sollicitudin vel. Maecenas sit amet euismod ipsum. Curabitur in eros auctor, pharetra est quis, bibendum dolor. Vivamus vel viverra dolor. Quisque at purus auctor, tincidunt risus vitae, feugiat libero. Integer auctor purus at eros vehicula blandit. Pellentesque vel erat leo. Sed lobortis dolor ac massa euismod, at aliquam mauris tincidunt. Proin dui massa, vestibulum nec ex id, eleifend dignissim mi. Sed at vehicula mi. Duis commodo malesuada lorem, vitae ultrices magna efficitur auctor. Phasellus quis euismod dui. Proin imperdiet ultrices velit, vel gravida nisi pretium eget. Fusce mollis dignissim ante, finibus dignissim metus."
                           },
                           {
                             "title":"Problems",
                             "snippet":"Medium Assignment",
                             "date":"10/01/2001",
-                            "id":2
+                            "id":"2",
+                            "details":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse molestie nisl mi, ut porta libero sollicitudin vel. Maecenas sit amet euismod ipsum. Curabitur in eros auctor, pharetra est quis, bibendum dolor. Vivamus vel viverra dolor. Quisque at purus auctor, tincidunt risus vitae, feugiat libero. Integer auctor purus at eros vehicula blandit. Pellentesque vel erat leo. Sed lobortis dolor ac massa euismod, at aliquam mauris tincidunt. Proin dui massa, vestibulum nec ex id, eleifend dignissim mi. Sed at vehicula mi. Duis commodo malesuada lorem, vitae ultrices magna efficitur auctor. Phasellus quis euismod dui. Proin imperdiet ultrices velit, vel gravida nisi pretium eget. Fusce mollis dignissim ante, finibus dignissim metus."
                           },
                           {
                             "title":"Project",
                             "snippet":"Small Assignment",
                             "date":"10/01/1801",
-                            "id":3
+                            "id":"3",
+                            "details":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse molestie nisl mi, ut porta libero sollicitudin vel. Maecenas sit amet euismod ipsum. Curabitur in eros auctor, pharetra est quis, bibendum dolor. Vivamus vel viverra dolor. Quisque at purus auctor, tincidunt risus vitae, feugiat libero. Integer auctor purus at eros vehicula blandit. Pellentesque vel erat leo. Sed lobortis dolor ac massa euismod, at aliquam mauris tincidunt. Proin dui massa, vestibulum nec ex id, eleifend dignissim mi. Sed at vehicula mi. Duis commodo malesuada lorem, vitae ultrices magna efficitur auctor. Phasellus quis euismod dui. Proin imperdiet ultrices velit, vel gravida nisi pretium eget. Fusce mollis dignissim ante, finibus dignissim metus."
                           }
                           ],
           "Lecturer": "Mr Mathematician"
       },
       {
+          "id":"3",
           "title":"Programming 2",
           "assignments":[
                            {
                             "title":"Algorithm Exam",
                             "snippet":"Big Assignment",
                             "date":"10/01/1901",
-                            "id":1
+                            "id":"1",
+                            "details":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse molestie nisl mi, ut porta libero sollicitudin vel. Maecenas sit amet euismod ipsum. Curabitur in eros auctor, pharetra est quis, bibendum dolor. Vivamus vel viverra dolor. Quisque at purus auctor, tincidunt risus vitae, feugiat libero. Integer auctor purus at eros vehicula blandit. Pellentesque vel erat leo. Sed lobortis dolor ac massa euismod, at aliquam mauris tincidunt. Proin dui massa, vestibulum nec ex id, eleifend dignissim mi. Sed at vehicula mi. Duis commodo malesuada lorem, vitae ultrices magna efficitur auctor. Phasellus quis euismod dui. Proin imperdiet ultrices velit, vel gravida nisi pretium eget. Fusce mollis dignissim ante, finibus dignissim metus."
                           },
                           {
                             "title":"Data Structures",
                             "snippet":"Medium Assignment",
                             "date":"10/01/2001",
-                            "id":2
+                            "id":"2",
+                            "details":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse molestie nisl mi, ut porta libero sollicitudin vel. Maecenas sit amet euismod ipsum. Curabitur in eros auctor, pharetra est quis, bibendum dolor. Vivamus vel viverra dolor. Quisque at purus auctor, tincidunt risus vitae, feugiat libero. Integer auctor purus at eros vehicula blandit. Pellentesque vel erat leo. Sed lobortis dolor ac massa euismod, at aliquam mauris tincidunt. Proin dui massa, vestibulum nec ex id, eleifend dignissim mi. Sed at vehicula mi. Duis commodo malesuada lorem, vitae ultrices magna efficitur auctor. Phasellus quis euismod dui. Proin imperdiet ultrices velit, vel gravida nisi pretium eget. Fusce mollis dignissim ante, finibus dignissim metus."
                           },
                           {
                             "title":"Exam",
                             "snippet":"Small Assignment",
                             "date":"10/01/1801",
-                            "id":3
+                            "id":"3",
+                            "details":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse molestie nisl mi, ut porta libero sollicitudin vel. Maecenas sit amet euismod ipsum. Curabitur in eros auctor, pharetra est quis, bibendum dolor. Vivamus vel viverra dolor. Quisque at purus auctor, tincidunt risus vitae, feugiat libero. Integer auctor purus at eros vehicula blandit. Pellentesque vel erat leo. Sed lobortis dolor ac massa euismod, at aliquam mauris tincidunt. Proin dui massa, vestibulum nec ex id, eleifend dignissim mi. Sed at vehicula mi. Duis commodo malesuada lorem, vitae ultrices magna efficitur auctor. Phasellus quis euismod dui. Proin imperdiet ultrices velit, vel gravida nisi pretium eget. Fusce mollis dignissim ante, finibus dignissim metus."
                           }
                           ],
           "Lecturer": "Mr Programmer 2"
       },
       {
+          "id":"4",
           "title":"Component Development",
           "assignments":[
                           {
                             "title":"SPA",
                             "snippet":"Big Assignment",
                             "date":"10/01/1901",
-                            "id":1
+                            "id":"1",
+                            "details":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse molestie nisl mi, ut porta libero sollicitudin vel. Maecenas sit amet euismod ipsum. Curabitur in eros auctor, pharetra est quis, bibendum dolor. Vivamus vel viverra dolor. Quisque at purus auctor, tincidunt risus vitae, feugiat libero. Integer auctor purus at eros vehicula blandit. Pellentesque vel erat leo. Sed lobortis dolor ac massa euismod, at aliquam mauris tincidunt. Proin dui massa, vestibulum nec ex id, eleifend dignissim mi. Sed at vehicula mi. Duis commodo malesuada lorem, vitae ultrices magna efficitur auctor. Phasellus quis euismod dui. Proin imperdiet ultrices velit, vel gravida nisi pretium eget. Fusce mollis dignissim ante, finibus dignissim metus."
                           },
                           {
                             "title":"SPA & Backend",
                             "snippet":"Medium Assignment",
                             "date":"10/01/2001",
-                            "id":2
+                            "id":"2",
+                            "details":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse molestie nisl mi, ut porta libero sollicitudin vel. Maecenas sit amet euismod ipsum. Curabitur in eros auctor, pharetra est quis, bibendum dolor. Vivamus vel viverra dolor. Quisque at purus auctor, tincidunt risus vitae, feugiat libero. Integer auctor purus at eros vehicula blandit. Pellentesque vel erat leo. Sed lobortis dolor ac massa euismod, at aliquam mauris tincidunt. Proin dui massa, vestibulum nec ex id, eleifend dignissim mi. Sed at vehicula mi. Duis commodo malesuada lorem, vitae ultrices magna efficitur auctor. Phasellus quis euismod dui. Proin imperdiet ultrices velit, vel gravida nisi pretium eget. Fusce mollis dignissim ante, finibus dignissim metus."
                           },
                           {
                             "title":"Test",
                             "snippet":"Small Assignment",
                             "date":"10/01/1801",
-                            "id":3
+                            "id":"3",
+                            "details":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse molestie nisl mi, ut porta libero sollicitudin vel. Maecenas sit amet euismod ipsum. Curabitur in eros auctor, pharetra est quis, bibendum dolor. Vivamus vel viverra dolor. Quisque at purus auctor, tincidunt risus vitae, feugiat libero. Integer auctor purus at eros vehicula blandit. Pellentesque vel erat leo. Sed lobortis dolor ac massa euismod, at aliquam mauris tincidunt. Proin dui massa, vestibulum nec ex id, eleifend dignissim mi. Sed at vehicula mi. Duis commodo malesuada lorem, vitae ultrices magna efficitur auctor. Phasellus quis euismod dui. Proin imperdiet ultrices velit, vel gravida nisi pretium eget. Fusce mollis dignissim ante, finibus dignissim metus."
                           }
                           ],
           "Lecturer": "Diarmuid O'Connor"
@@ -107,106 +123,111 @@
     ]
   },
   {
-    "firstName":"Dennis",
-    "secondName":"O'Brien",
-    "email":"email@email.com",
-    "username":"dobr",
-    "password":"dobr",
-    "age":"52",
+    "firstName":"Denise",
+    "secondName":"Butler",
+    "email":"denise@email.com",
+    "username":"dbut",
+    "password":"dbut",
+    "age":"26",
     "modules":
     [
       {
-          "title":"Business",
+          "id":"1",
+          "title":"Social Working 1",
           "assignments":[
                           {
-                            "title":"Assignment 1",
+                            "title":"Program",
                             "snippet":"Big Assignment",
-                            "date":"10/01/1901"
+                            "date":"10/01/1901",
+                            "id":"1"
                           },
                           {
-                            "title":"Assignment 2",
+                            "title":"GUI",
                             "snippet":"Medium Assignment",
-                            "date":"10/01/2001"
+                            "date":"10/01/2001",
+                            "id":"2"
                           },
                           {
-                            "title":"Assignment 3",
+                            "title":"Spec",
                             "snippet":"Small Assignment",
-                            "date":"10/01/1801"
+                            "date":"10/01/1801",
+                            "id":"3"
                           }
                         ],
           "Lecturer": "Mr Programmer"
       },
       {
-          "title":"Law",
+          "id":"2",
+          "title":"Ethics",
           "assignments":[
-                           "Assignment 1",
-                           "Assignment 2",
-                           "Assignment 3"
+                           {
+                            "title":"Test",
+                            "snippet":"Big Assignment",
+                            "date":"10/01/1901",
+                            "id":"1"
+                          },
+                          {
+                            "title":"Problems",
+                            "snippet":"Medium Assignment",
+                            "date":"10/01/2001",
+                            "id":"2"
+                          },
+                          {
+                            "title":"Project",
+                            "snippet":"Small Assignment",
+                            "date":"10/01/1801",
+                            "id":"3"
+                          }
                           ],
           "Lecturer": "Mr Mathematician"
       },
       {
-          "title":"Politics",
+          "id":"3",
+          "title":"Law",
           "assignments":[
-                           "Assignment 1",
-                           "Assignment 2",
-                           "Assignment 3"
+                           {
+                            "title":"Algorithm Exam",
+                            "snippet":"Big Assignment",
+                            "date":"10/01/1901",
+                            "id":"1"
+                          },
+                          {
+                            "title":"Data Structures",
+                            "snippet":"Medium Assignment",
+                            "date":"10/01/2001",
+                            "id":"2"
+                          },
+                          {
+                            "title":"Exam",
+                            "snippet":"Small Assignment",
+                            "date":"10/01/1801",
+                            "id":"3"
+                          }
                           ],
           "Lecturer": "Mr Programmer 2"
       },
       {
-          "title":"Economics",
+          "id":"4",
+          "title":"Social Working 2",
           "assignments":[
-                           "Assignment 1",
-                           "Assignment 2",
-                           "Assignment 3"
-                          ],
-          "Lecturer": "Diarmuid O'Connor"
-      }
-    ]
-  },
-  {
-    "firstName":"Johnny",
-    "secondName":"O'Brien",
-    "email":"email2@email2.com",
-    "username":"jobr",
-    "password":"jobr",
-    "age":"52",
-    "modules":
-    [
-      {
-          "title":"Economics I",
-          "Assignments":[
-                           "Assignment 1",
-                           "Assignment 2",
-                           "Assignment 3"
-                          ],
-          "Lecturer": "Diarmuid O'Connor"
-      },
-      {
-          "title":"Economics II",
-          "Assignments":[
-                           "Assignment 1",
-                           "Assignment 2",
-                           "Assignment 3"
-                          ],
-          "Lecturer": "Diarmuid O'Connor"
-      },
-      {
-          "title":"Economics III",
-          "Assignments":[
-                           "Assignment 1",
-                           "Assignment 2",
-                           "Assignment 3"
-                          ],
-          "Lecturer": "Diarmuid O'Connor"
-      },
-      {
-          "title":"Economics IV",
-          "Assignments":[
-                           "Assignment 1",
-                           "Assignment 2",
-                           "Assignment 3"
+                          {
+                            "title":"SPA",
+                            "snippet":"Big Assignment",
+                            "date":"10/01/1901",
+                            "id":"1"
+                          },
+                          {
+                            "title":"SPA & Backend",
+                            "snippet":"Medium Assignment",
+                            "date":"10/01/2001",
+                            "id":"2"
+                          },
+                          {
+                            "title":"Test",
+                            "snippet":"Small Assignment",
+                            "date":"10/01/1801",
+                            "id":"3"
+                          }
                           ],
           "Lecturer": "Diarmuid O'Connor"
       }
