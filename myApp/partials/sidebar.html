@@ -1,8 +1,8 @@
 <nav>
-  <ul role="presentation" class="nav nav-pills nav-stacked" data-spy="affix" data-offset-top="205">
-    <li><h3>Title</h3></li>
-    <li><a data-toggle="pill" href="/">Home</a></li>
-    <li><a data-toggle="pill"  href="#/dashboard">List Item</a></li>
-    <li><a data-toggle="pill" href="#">List Item</a></li>
+  <ul class="nav nav-pills nav-stacked affix">
+    <li ng-class="{active: $route.current.activetab == 'dashboard'}"><a data-toggle="pill" href="#/dashboard" data-target="#dashboard"><span class="glyphicon glyphicon-home"></span> Dashboard</a></li>
+    <li ng-class="{active: $route.current.activetab == 'modules'}"><a data-toggle="pill"  href="#/modules" data-target="#modules"><span class="glyphicon glyphicon-book"></span> Modules</a></li>
+    <li ng-class="{active: $route.current.activetab == 'assignments'}"><a data-toggle="pill" href="#/assignments" data-target="#assignments"><span class="glyphicon glyphicon-pencil"></span> Assignments</a></li>
+    <li ng-class="{active: $route.current.activetab == 'profile'}"><a data-toggle="pill" href="#/profile" data-target="#profile"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
   </ul>
 </nav>

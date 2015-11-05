@@ -2,8 +2,9 @@
   <div class="col-sm-2" ng-include="'./partials/sidebar.html'">
   </div>
   <div class="col-sm-10">
-          <p><b>Module name:</b> {{ module.title }}</p>
-          <p><b>Assignment name:</b> {{ assignment.title }}</p>
+          <h2>{{ assignment.title }}</h2>
+          <p><b>Module name:</b> <a href="#/modules/{{module.id}}">{{ module.title }}</a></p>
+          <p><b>Lecturer:</b> {{ module.lecturer }}</p>
           <p><b>Description:</b> {{ assignment.snippet }}</p>
           <p><b>Due Date:</b> {{ assignment.date }}
           <p><b>Details:</b> {{ assignment.details }}

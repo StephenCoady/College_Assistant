@@ -6,6 +6,7 @@
     "username":"admin",
     "password":"admin",
     "age":"26",
+    "course":"Applied Computing",
     "modules":
     [
       {
@@ -15,26 +16,29 @@
                           {
                             "title":"Program",
                             "snippet":"Big Assignment",
-                            "date":"10/01/1901",
+                            "date":"10/11/2015",
+                            "moduleId":"1",
                             "id":"1",
                             "details":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse molestie nisl mi, ut porta libero sollicitudin vel. Maecenas sit amet euismod ipsum. Curabitur in eros auctor, pharetra est quis, bibendum dolor. Vivamus vel viverra dolor. Quisque at purus auctor, tincidunt risus vitae, feugiat libero. Integer auctor purus at eros vehicula blandit. Pellentesque vel erat leo. Sed lobortis dolor ac massa euismod, at aliquam mauris tincidunt. Proin dui massa, vestibulum nec ex id, eleifend dignissim mi. Sed at vehicula mi. Duis commodo malesuada lorem, vitae ultrices magna efficitur auctor. Phasellus quis euismod dui. Proin imperdiet ultrices velit, vel gravida nisi pretium eget. Fusce mollis dignissim ante, finibus dignissim metus."
                           },
                           {
                             "title":"GUI",
                             "snippet":"Medium Assignment",
-                            "date":"10/01/2001",
+                            "date":"15/11/2015",
+                            "moduleId":"1",
                             "id":"2",
                             "details":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse molestie nisl mi, ut porta libero sollicitudin vel. Maecenas sit amet euismod ipsum. Curabitur in eros auctor, pharetra est quis, bibendum dolor. Vivamus vel viverra dolor. Quisque at purus auctor, tincidunt risus vitae, feugiat libero. Integer auctor purus at eros vehicula blandit. Pellentesque vel erat leo. Sed lobortis dolor ac massa euismod, at aliquam mauris tincidunt. Proin dui massa, vestibulum nec ex id, eleifend dignissim mi. Sed at vehicula mi. Duis commodo malesuada lorem, vitae ultrices magna efficitur auctor. Phasellus quis euismod dui. Proin imperdiet ultrices velit, vel gravida nisi pretium eget. Fusce mollis dignissim ante, finibus dignissim metus."
                           },
                           {
                             "title":"Spec",
                             "snippet":"Small Assignment",
-                            "date":"10/01/1801",
+                            "date":"10/01/2016",
+                            "moduleId":"1",
                             "id":"3",
                             "details":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse molestie nisl mi, ut porta libero sollicitudin vel. Maecenas sit amet euismod ipsum. Curabitur in eros auctor, pharetra est quis, bibendum dolor. Vivamus vel viverra dolor. Quisque at purus auctor, tincidunt risus vitae, feugiat libero. Integer auctor purus at eros vehicula blandit. Pellentesque vel erat leo. Sed lobortis dolor ac massa euismod, at aliquam mauris tincidunt. Proin dui massa, vestibulum nec ex id, eleifend dignissim mi. Sed at vehicula mi. Duis commodo malesuada lorem, vitae ultrices magna efficitur auctor. Phasellus quis euismod dui. Proin imperdiet ultrices velit, vel gravida nisi pretium eget. Fusce mollis dignissim ante, finibus dignissim metus."
                           }
                         ],
-          "Lecturer": "Mr Programmer"
+          "lecturer": "Mr Programmer"
       },
       {
           "id":"2",
@@ -43,26 +47,29 @@
                            {
                             "title":"Test",
                             "snippet":"Big Assignment",
-                            "date":"10/01/1901",
+                            "date":"01/11/2015",
+                            "moduleId":"2",
                             "id":"1",
                             "details":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse molestie nisl mi, ut porta libero sollicitudin vel. Maecenas sit amet euismod ipsum. Curabitur in eros auctor, pharetra est quis, bibendum dolor. Vivamus vel viverra dolor. Quisque at purus auctor, tincidunt risus vitae, feugiat libero. Integer auctor purus at eros vehicula blandit. Pellentesque vel erat leo. Sed lobortis dolor ac massa euismod, at aliquam mauris tincidunt. Proin dui massa, vestibulum nec ex id, eleifend dignissim mi. Sed at vehicula mi. Duis commodo malesuada lorem, vitae ultrices magna efficitur auctor. Phasellus quis euismod dui. Proin imperdiet ultrices velit, vel gravida nisi pretium eget. Fusce mollis dignissim ante, finibus dignissim metus."
                           },
                           {
                             "title":"Problems",
                             "snippet":"Medium Assignment",
-                            "date":"10/01/2001",
+                            "date":"25/11/2015",
+                            "moduleId":"2",
                             "id":"2",
                             "details":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse molestie nisl mi, ut porta libero sollicitudin vel. Maecenas sit amet euismod ipsum. Curabitur in eros auctor, pharetra est quis, bibendum dolor. Vivamus vel viverra dolor. Quisque at purus auctor, tincidunt risus vitae, feugiat libero. Integer auctor purus at eros vehicula blandit. Pellentesque vel erat leo. Sed lobortis dolor ac massa euismod, at aliquam mauris tincidunt. Proin dui massa, vestibulum nec ex id, eleifend dignissim mi. Sed at vehicula mi. Duis commodo malesuada lorem, vitae ultrices magna efficitur auctor. Phasellus quis euismod dui. Proin imperdiet ultrices velit, vel gravida nisi pretium eget. Fusce mollis dignissim ante, finibus dignissim metus."
                           },
                           {
                             "title":"Project",
                             "snippet":"Small Assignment",
-                            "date":"10/01/1801",
+                            "date":"01/11/2015",
+                            "moduleId":"2",
                             "id":"3",
                             "details":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse molestie nisl mi, ut porta libero sollicitudin vel. Maecenas sit amet euismod ipsum. Curabitur in eros auctor, pharetra est quis, bibendum dolor. Vivamus vel viverra dolor. Quisque at purus auctor, tincidunt risus vitae, feugiat libero. Integer auctor purus at eros vehicula blandit. Pellentesque vel erat leo. Sed lobortis dolor ac massa euismod, at aliquam mauris tincidunt. Proin dui massa, vestibulum nec ex id, eleifend dignissim mi. Sed at vehicula mi. Duis commodo malesuada lorem, vitae ultrices magna efficitur auctor. Phasellus quis euismod dui. Proin imperdiet ultrices velit, vel gravida nisi pretium eget. Fusce mollis dignissim ante, finibus dignissim metus."
                           }
                           ],
-          "Lecturer": "Mr Mathematician"
+          "lecturer": "Mr Mathematician"
       },
       {
           "id":"3",
@@ -71,26 +78,29 @@
                            {
                             "title":"Algorithm Exam",
                             "snippet":"Big Assignment",
-                            "date":"10/01/1901",
+                            "date":"29/11/2015",
+                            "moduleId":"3",
                             "id":"1",
                             "details":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse molestie nisl mi, ut porta libero sollicitudin vel. Maecenas sit amet euismod ipsum. Curabitur in eros auctor, pharetra est quis, bibendum dolor. Vivamus vel viverra dolor. Quisque at purus auctor, tincidunt risus vitae, feugiat libero. Integer auctor purus at eros vehicula blandit. Pellentesque vel erat leo. Sed lobortis dolor ac massa euismod, at aliquam mauris tincidunt. Proin dui massa, vestibulum nec ex id, eleifend dignissim mi. Sed at vehicula mi. Duis commodo malesuada lorem, vitae ultrices magna efficitur auctor. Phasellus quis euismod dui. Proin imperdiet ultrices velit, vel gravida nisi pretium eget. Fusce mollis dignissim ante, finibus dignissim metus."
                           },
                           {
                             "title":"Data Structures",
                             "snippet":"Medium Assignment",
-                            "date":"10/01/2001",
+                            "date":"25/12/2015",
+                            "moduleId":"3",
                             "id":"2",
                             "details":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse molestie nisl mi, ut porta libero sollicitudin vel. Maecenas sit amet euismod ipsum. Curabitur in eros auctor, pharetra est quis, bibendum dolor. Vivamus vel viverra dolor. Quisque at purus auctor, tincidunt risus vitae, feugiat libero. Integer auctor purus at eros vehicula blandit. Pellentesque vel erat leo. Sed lobortis dolor ac massa euismod, at aliquam mauris tincidunt. Proin dui massa, vestibulum nec ex id, eleifend dignissim mi. Sed at vehicula mi. Duis commodo malesuada lorem, vitae ultrices magna efficitur auctor. Phasellus quis euismod dui. Proin imperdiet ultrices velit, vel gravida nisi pretium eget. Fusce mollis dignissim ante, finibus dignissim metus."
                           },
                           {
                             "title":"Exam",
                             "snippet":"Small Assignment",
-                            "date":"10/01/1801",
+                            "date":"01/12/2015",
+                            "moduleId":"3",
                             "id":"3",
                             "details":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse molestie nisl mi, ut porta libero sollicitudin vel. Maecenas sit amet euismod ipsum. Curabitur in eros auctor, pharetra est quis, bibendum dolor. Vivamus vel viverra dolor. Quisque at purus auctor, tincidunt risus vitae, feugiat libero. Integer auctor purus at eros vehicula blandit. Pellentesque vel erat leo. Sed lobortis dolor ac massa euismod, at aliquam mauris tincidunt. Proin dui massa, vestibulum nec ex id, eleifend dignissim mi. Sed at vehicula mi. Duis commodo malesuada lorem, vitae ultrices magna efficitur auctor. Phasellus quis euismod dui. Proin imperdiet ultrices velit, vel gravida nisi pretium eget. Fusce mollis dignissim ante, finibus dignissim metus."
                           }
                           ],
-          "Lecturer": "Mr Programmer 2"
+          "lecturer": "Mr Programmer 2"
       },
       {
           "id":"4",
@@ -99,26 +109,29 @@
                           {
                             "title":"SPA",
                             "snippet":"Big Assignment",
-                            "date":"10/01/1901",
+                            "date":"06/11/2015",
+                            "moduleId":"4",
                             "id":"1",
                             "details":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse molestie nisl mi, ut porta libero sollicitudin vel. Maecenas sit amet euismod ipsum. Curabitur in eros auctor, pharetra est quis, bibendum dolor. Vivamus vel viverra dolor. Quisque at purus auctor, tincidunt risus vitae, feugiat libero. Integer auctor purus at eros vehicula blandit. Pellentesque vel erat leo. Sed lobortis dolor ac massa euismod, at aliquam mauris tincidunt. Proin dui massa, vestibulum nec ex id, eleifend dignissim mi. Sed at vehicula mi. Duis commodo malesuada lorem, vitae ultrices magna efficitur auctor. Phasellus quis euismod dui. Proin imperdiet ultrices velit, vel gravida nisi pretium eget. Fusce mollis dignissim ante, finibus dignissim metus."
                           },
                           {
                             "title":"SPA & Backend",
                             "snippet":"Medium Assignment",
-                            "date":"10/01/2001",
+                            "date":"08/11/2015",
+                            "moduleId":"4",
                             "id":"2",
                             "details":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse molestie nisl mi, ut porta libero sollicitudin vel. Maecenas sit amet euismod ipsum. Curabitur in eros auctor, pharetra est quis, bibendum dolor. Vivamus vel viverra dolor. Quisque at purus auctor, tincidunt risus vitae, feugiat libero. Integer auctor purus at eros vehicula blandit. Pellentesque vel erat leo. Sed lobortis dolor ac massa euismod, at aliquam mauris tincidunt. Proin dui massa, vestibulum nec ex id, eleifend dignissim mi. Sed at vehicula mi. Duis commodo malesuada lorem, vitae ultrices magna efficitur auctor. Phasellus quis euismod dui. Proin imperdiet ultrices velit, vel gravida nisi pretium eget. Fusce mollis dignissim ante, finibus dignissim metus."
                           },
                           {
                             "title":"Test",
                             "snippet":"Small Assignment",
-                            "date":"10/01/1801",
+                            "date":"17/10/2015",
+                            "moduleId":"4",
                             "id":"3",
                             "details":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse molestie nisl mi, ut porta libero sollicitudin vel. Maecenas sit amet euismod ipsum. Curabitur in eros auctor, pharetra est quis, bibendum dolor. Vivamus vel viverra dolor. Quisque at purus auctor, tincidunt risus vitae, feugiat libero. Integer auctor purus at eros vehicula blandit. Pellentesque vel erat leo. Sed lobortis dolor ac massa euismod, at aliquam mauris tincidunt. Proin dui massa, vestibulum nec ex id, eleifend dignissim mi. Sed at vehicula mi. Duis commodo malesuada lorem, vitae ultrices magna efficitur auctor. Phasellus quis euismod dui. Proin imperdiet ultrices velit, vel gravida nisi pretium eget. Fusce mollis dignissim ante, finibus dignissim metus."
                           }
                           ],
-          "Lecturer": "Diarmuid O'Connor"
+          "lecturer": "Diarmuid O'Connor"
       }
     ]
   },
@@ -154,7 +167,7 @@
                             "id":"3"
                           }
                         ],
-          "Lecturer": "Mr Programmer"
+          "lecturer": "Mr Programmer"
       },
       {
           "id":"2",
@@ -179,7 +192,7 @@
                             "id":"3"
                           }
                           ],
-          "Lecturer": "Mr Mathematician"
+          "lecturer": "Mr Mathematician"
       },
       {
           "id":"3",
@@ -204,7 +217,7 @@
                             "id":"3"
                           }
                           ],
-          "Lecturer": "Mr Programmer 2"
+          "lecturer": "Mr Programmer 2"
       },
       {
           "id":"4",
@@ -229,7 +242,7 @@
                             "id":"3"
                           }
                           ],
-          "Lecturer": "Diarmuid O'Connor"
+          "lecturer": "Diarmuid O'Connor"
       }
     ]
   }

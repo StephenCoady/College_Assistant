@@ -1,0 +1,22 @@
+[
+{
+    "firstName":"Stephen",
+    "secondName":"Coady",
+    "email":"scoady2@gmail.com",
+    "username":"admin",
+    "password":"admin",
+    "age":"26",
+    "course":"Applied Computing",
+    "modules": []
+  },
+  {
+    "firstName":"Stephen",
+    "secondName":"Coady",
+    "email":"scoady2@gmail.com",
+    "username":"admin2",
+    "password":"admin2",
+    "age":"26",
+    "course":"Applied Computing",
+    "modules": []
+  }
+]

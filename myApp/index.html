@@ -19,27 +19,25 @@
   <script src="../support/scripts/angular.min.js"></script>
   <script src="../support/scripts/angular-route.min.js"></script>
   <script src="app.js"></script>
-
-
-<div class="container">
-    <nav class="navbar navbar-default" role="navigation">
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
       <div class="navbar-header">
-        <a class="navbar-brand" href="#">College Assistant</a>
+        <a class="navbar-brand" href="#"><img class="brand-image" alt="Brand" src="../support/files/c-icon.png"></a>
       </div>
         <nav class="nav navbar-nav navbar-left">
-          <li><a ng-if="!loggedIn" href="#/login" class = "btn btn-link">Log In</a></li>
-          <li><a ng-if="!loggedIn" href="#/signup" class = "btn btn-link">Sign up</a></li>
-          <li> <a ng-if="loggedIn" href="#/dashboard" class = "btn btn-link">Dashboard</a></li>
+          <li><a ng-if="!loggedIn" href="#/login" data-target="#login" class = "btn btn-link"><span class="glyphicon glyphicon-user"></span> Log In</a></li>
+          <li><a ng-if="!loggedIn" href="#/signup" data-target="#signup" class = "btn btn-link"><span class="glyphicon glyphicon-heart"></span> Sign up</a></li>
+          <li><a ng-if="loggedIn" href="#/dashboard" data-target="#dashboard" class = "btn btn-link">Dashboard</a></li>
         </nav>
         <nav class ="nav navbar-nav navbar-right">
-          <li ng-if="loggedIn" ><a ng-click="logout()" href="#/" class = "btn btn-link">Log Out</a></li>
+          <li ng-if="loggedIn" ><a ng-click="logout()" href="#/" class = "btn btn-link"><span class="glyphicon glyphicon-off"></span>  Log Out</a></li>
         </nav>
     </nav>
-
+<div class="container">
     <div ng-view >
     <!-- Dynamic page content goes here -->
     </div>
-    
+</div>
+<div class="container fixed-bottom">
     <div class="jumbotron">
       <p>
         Page developed by Stephen Coady
