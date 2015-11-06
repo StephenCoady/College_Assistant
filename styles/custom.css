@@ -1,30 +1,30 @@
 .main-page-image {
-    margin: auto;
-    display: table;
+  margin: auto;
+  display: table;
 }
 
 
 
 .jumbotron {
-   position: relative;
-   top: 150px;
+ position: relative;
+ top: 150px;
 }
 
 .navbar .navbar-right {
   float: right;
   margin-right: 10px;
   
-  }
+}
 
 .navbar > .active > a,
 .navbar > .active > a:hover, .navbar > li > a:hover {
   text-decoration: none;
-font-weight: bold;
-border-radius:0px;
-border-bottom-width: 4px;
-border-bottom-style: solid;
-border-bottom-color: #FF6600;
-    color: #000 !important;
+  font-weight: bold;
+  border-radius:0px;
+  border-bottom-width: 4px;
+  border-bottom-style: solid;
+  border-bottom-color: #FF6600;
+  color: #000 !important;
   background-color: transparent !important;
 }
 
@@ -35,21 +35,21 @@ border-bottom-color: #FF6600;
 
 .nav-pills > .active > a,
 .nav-pills > .active > a:hover,.nav-pills > li > a:hover {
-text-decoration: none;
-font-weight: bold;
-border-radius:0px;
-border-bottom-width: 4px;
-border-bottom-style: solid;
-border-bottom-color: #FF6600;
-    color: #000 !important;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius:0px;
+  border-bottom-width: 4px;
+  border-bottom-style: solid;
+  border-bottom-color: #FF6600;
+  color: #000 !important;
   background-color: transparent !important;
 }
 .nav-pills > li > a{
-    border-radius:0px;
+  border-radius:0px;
 }
 
 textarea {
-   resize: none;
+ resize: none;
 }
 
 body {
@@ -59,28 +59,28 @@ body {
 @media (min-width: 979px) {
 
   #midCol.affix-top {
-      position:fixed;
-      width:265px;
-      margin-right:10px;
-      
+    position:fixed;
+    width:265px;
+    margin-right:10px;
+
   }
   
   #midCol.affix {
-      position:static;
-      width:100%;
+    position:static;
+    width:100%;
   }
 
 }
 
 @media (min-width: 767px) {
   .affix,.affix-top {
-      position:fixed;
+    position:fixed;
   }
 }
 
 .brand-image{
-    width: 50px; /* you can use % */
-    height: 50px;
+  width: 50px; /* you can use % */
+  height: 50px;
 }
 
 .btn-circle {
@@ -95,5 +95,26 @@ body {
 }
 
 .form-control .search-query{
-    border-radius: 8px;
+  border-radius: 8px;
+}
+
+.card{
+  padding-top: 50px;
+  position: relative;
+  overflow: hidden;
+  margin: 0.5rem 0 1rem 0;
+  background-color: #EFEFEF;
+  border-radius: 2px;
+  box-shadow: 0 1px 5px 0 rgba(0,0,0,0.26);
+  padding:15px;
+  margin:10px; 
+}
+
+.btn-delete-module{
+  margin-top: 10px;
+}
+
+.card-header{
+  font-size: 22px;
+
 }

@@ -154,7 +154,7 @@ app.controller('dashboardCtrl',
   })
 
 app.controller('allModuleCtrl',
-  function ($scope, $rootScope, $location, UserService, $route, NewModuleService) {
+  function ($scope, $rootScope, $location, UserService, $route, NewModuleService, AssignmentService) {
     $scope.module = {};
     $scope.$route = $route;
     var username = $rootScope.username;
@@ -169,6 +169,12 @@ app.controller('allModuleCtrl',
     $scope.newModule = function (){
       NewModuleService.newModule($scope.module);
       $scope.module = new Module({});
+    }
+
+    $scope.confirmDelete = function(index){
+      debugger;
+     $scope.modules.splice(index, 1);
+     AssignmentService.getAssignments();
     }
   });
 
@@ -209,6 +215,15 @@ app.controller('moduleCtrl',
   $scope.newAssignment = function (){
     NewAssignmentService.newAssignment($scope.assignment);
     $scope.assignment = new Assignment({});
+  }
+  $scope.changeAssignment = function(index){
+    
+    if ($scope.assignments[index].complete === true){
+        $scope.assignments[index].complete = false;
+    }
+    else{
+        $scope.assignments[index].complete = true;
+    }
   }
 });
 
@@ -348,6 +363,7 @@ function Assignment(data, assignmentsLength, moduleId) {
   this.snippet = data.snippet || "",
   this.date = data.date || "",
   this.moduleId = moduleId || "",
+  this.complete = false,
   this.id = (assignmentsLength+1).toString() || "",
   this.details = data.details || ""
 }

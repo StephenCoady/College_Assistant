@@ -9,11 +9,11 @@
       <div class="col-sm-2">
         <div class="input-group">
           <input type="text" class="form-control search-query" placeholder="Search for..." ng-model="query">
+        </div>
       </div>
     </div>
-    </div>
-      <form class="container" novalidate ng-submit="newModule()" name="moduleData">
-    <div class="row">
+    <form class="container" novalidate ng-submit="newModule()" name="moduleData">
+      <div class="row">
         <div class="col-md-2">
           <div class="form-group">
             <input type="text" class="form-control" placeholder="Title here" ng-model="module.title" autofocus>
@@ -21,37 +21,34 @@
         </div>
 
         <div class="col-md-2">
-            <div class="form-group">
-              <input type="text" class="form-control" placeholder="Lecturer Name" ng-model="module.lecturer" autofocus>
-            </div>
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Lecturer Name" ng-model="module.lecturer" autofocus>
+          </div>
         </div>
         <div class="col-md-2">
           <div class="form-group-btn">
-              <button type="submit" class="btn btn-success save-module"><span class="glyphicon glyphicon-plus-sign"></span> Add
-              </button>
-                </div>
+            <button type="submit" class="btn btn-success save-module"><span class="glyphicon glyphicon-plus-sign"></span> Add
+            </button>
+          </div>
         </div>
+      </div>
+    </form>
+    <div class="row">
+      <div class="col-sm-4"  ng-repeat="module in modules | filter:{ title: query }">
+        <div class="card text-center">
+          <span class="card-header">
+            <b>{{ module.title }}</b>
+          </span>
+          <div class="card-block">
+            <h4 class="card-title"></h4>
+            <p class="card-text">Lecturer: {{ module.lecturer }}</p>
+            <a href="#/modules/{{module.id}}" class="btn btn-primary btn-sm">View Module</a>
+          </div>
+          <div class="card-footer text-muted">
+            <button type="submit" class="btn btn-danger btn-xs btn-delete-module" ng-click="confirmDelete($index)">Delete</button>
+          </div>
+        </div>
+      </div>
     </div>
-</form>
-      <table class="table table-bordered table-hover">
-        <thead>
-          <th class="title">Module</th>
-          <th class="assignments">Assignments</th>
-          <th class="lecturer">Lecturer</th>
-        </thead>
-
-        <tbody ng-repeat="module in modules | filter:{ title: query }" >
-            <tr>
-            <td><a href="#/modules/{{module.id}}">{{ module.title }}</a></td>
-            <td>
-              <ul ng-repeat="assignment in module.assignments">
-              <li><a href="#/modules/{{module.id}}/{{assignment.id}}">{{ assignment.title}}</a></li>
-              <p class = "assignment-snippet">{{ assignment.snippet }}</p>
-              </ul>
-            </td>
-            <td>{{ module.lecturer }}</td>
-          </tr>
-        </tbody>
-        </table>
   </div>
 </div>

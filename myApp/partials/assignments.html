@@ -3,8 +3,11 @@
   </div>
   <div class="col-sm-10">
     <div class="row">
-      <div class="col-sm-10">
+      <div class="col-sm-2">
         <h3>Your Assignments</h3>
+      </div>
+      <div class="col-sm-8">
+       
       </div>
       <div class="col-sm-2">
         <div class="input-group">
@@ -16,18 +19,22 @@
         <thead>
           <th class="assignments">Assignment</th>
           <th class="module">Module</th>
-          <th class="date">Due on <select ng-model="orderProp">
+          <th class="date">Due on </th>
+          <th> <select ng-model="orderProp">
         <option value="title">Alphabetical</option>
         <option value="date">Most Urgent</option>
         <option value="-date">Furthest</option>
+        <option value="complete">Completion Status</option>
       </select></th>
         </thead>
 
-        <tbody ng-repeat="assignment in assignments | filter:{ title: query } | orderBy:orderProp" >
+        <tbody ng-repeat="assignment in assignments | filter:{ title: query, complete: completion} | orderBy:orderProp" >
             <tr>
             <td><a href="#/modules/{{assignment.moduleId}}/{{assignment.id}}">{{ assignment.title }}</a></td>
             <td><a href="#/modules/{{assignment.moduleId}}"> {{ modules[assignment.moduleId].title }}</a></td>
             <td>{{ assignment.date }}</td>
+            <td><div ng-if="assignment.complete" class="glyphicon glyphicon-ok"></div>
+            <div ng-if="!assignment.complete" class="glyphicon glyphicon-remove"></div></td>
           </tr>
         </tbody>
         </table>
