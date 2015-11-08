@@ -1,6 +1,16 @@
-var app = angular.module('collegeApp', ['ngRoute'])
+/* this is an app to provide the functionality for a college assistant
+ it is built using angular.js
 
-app.config(['$routeProvider',
+ it is an assignment for Component Development in Applied Computing
+ By Stpehen Coady
+ */
+
+
+ var app = angular.module('collegeApp', ['ngRoute'])
+
+
+
+ app.config(['$routeProvider',
   function ($routeProvider, $rootScope) {
     $routeProvider
     .when('/', {
@@ -108,6 +118,10 @@ app.config(['$routeProvider',
     });
   }]);
 
+
+//this is the controller for the landing page, 
+//which controls what the user sees when they first visit the app
+
 app.controller('myCtrl', function($scope, $rootScope) {
   $rootScope.loggedIn = false;
 
@@ -125,6 +139,8 @@ app.controller('myCtrl', function($scope, $rootScope) {
   };
 });
 
+
+//the controller for the user's profile page
 app.controller('profileCtrl', function ($scope, $rootScope, $route, UserService) {
   $scope.$route = $route;
 
@@ -136,11 +152,12 @@ app.controller('profileCtrl', function ($scope, $rootScope, $route, UserService)
   }
 
   $scope.editUser = function (user){
-  $scope.user = user;
-  alertify.success("Information Updated!")
-}
+    $scope.user = user;
+    alertify.success("Information Updated!")
+  }
 });
 
+//the controller for the timetable view. Not really used as functionality is not complete
 app.controller('timetableCtrl', function ($scope, $rootScope, $route, TimetableService, UserService) {
   $scope.$route = $route;
   $rootScope.users = UserService.getUsers();
@@ -149,10 +166,13 @@ app.controller('timetableCtrl', function ($scope, $rootScope, $route, TimetableS
 
 });
 
-
+//the controller to allow logging in fucntionality
 app.controller('loginCtrl', function ($scope, $location, $rootScope, UserService) {
-  $scope.username = "user";
+
+
+  $scope.username = "user"; // set so that it is easy to log in for testing
   $scope.password = "pass";
+  
   $scope.submit = function(){
     var usrname = $scope.username;
     var pass = $scope.password;
@@ -171,7 +191,7 @@ app.controller('loginCtrl', function ($scope, $location, $rootScope, UserService
       $rootScope.loggedIn = true;
       $location.path('/dashboard');
       if($rootScope.username === 'admin'){
-        debugger;
+
         $scope.user.role = 'admin';
       }
 
@@ -184,6 +204,8 @@ app.controller('loginCtrl', function ($scope, $location, $rootScope, UserService
 
 });
 
+
+//controls the dashboard. most of this controller is utilised by the admin account.
 app.controller('dashboardCtrl', function ($scope, $rootScope, $location, UserService, $route) {
   $scope.$route = $route;
   var username = $rootScope.username;
@@ -206,6 +228,8 @@ app.controller('dashboardCtrl', function ($scope, $rootScope, $location, UserSer
     }
   }
 
+  //the following functions in this controller are used only by 
+  //the administrator when they are editing users
   $scope.editUser = function(user) {
     user.oldFirstName = user.firstName;
     user.oldSecondName = user.secondName;
@@ -248,6 +272,7 @@ $scope.cancelEdit = function (user) {
 
 })
 
+// a controller which allows users to view their current modules and also create new ones
 app.controller('allModuleCtrl',
   function ($scope, $rootScope, $location, UserService, $route, NewModuleService, AssignmentService) {
     $scope.module = {};
@@ -261,20 +286,22 @@ app.controller('allModuleCtrl',
       }
     }
     $scope.modules = UserService.getModules();
-    debugger;
+
+    //creates a new module using the NewModuleService
     $scope.newModule = function (){
       NewModuleService.newModule($scope.module);
       alertify.success("Successfully created module: " + $scope.module.title);
       $scope.module = new Module({});
     }
 
+    //delete a module
     $scope.confirmDelete = function(index){
-      debugger;
       alertify.error("Successfully deleted module: " + $scope.modules[index].title);
       delete $scope.modules[index];
     }
   });
 
+//a controller for all assignments in a user's module array
 app.controller('allAssignCtrl',
   function ($scope, $rootScope, UserService, $route) {
     $scope.$route = $route;
@@ -293,13 +320,13 @@ app.controller('allAssignCtrl',
   }
   );
 
+// a controller which manages a detailed view of a module
 app.controller('moduleCtrl', 
   function ($scope, $rootScope, $routeParams, UserService, NewAssignmentService) {
    var users = UserService.getUsers();
-   $scope.users = UserService.getUsers();
-   for (x in $scope.users){
-     if ($scope.users[x].username === $rootScope.username){
-      $scope.modules = $scope.users[x].modules;
+   for (x in users){
+     if (users[x].username === $rootScope.username){
+      $scope.modules = users[x].modules;
       for (y in $scope.modules){
         if ($scope.modules[y].id === $routeParams.moduleId){
           $scope.module = $scope.modules[y];
@@ -309,11 +336,15 @@ app.controller('moduleCtrl',
   }
   $rootScope.module = $scope.module;
   $scope.assignments = $scope.module.assignments;
+
+  // to create a new assignment in a module
   $scope.newAssignment = function (){
     alertify.success("New Assignment successfully created.");
     NewAssignmentService.newAssignment($scope.assignment);
     $scope.assignment = new Assignment({});
   }
+
+  // a function to mark an assignment as either complete or still needing work
   $scope.changeAssignment = function(index){
 
     if ($scope.assignments[index].complete === true){
@@ -326,6 +357,7 @@ app.controller('moduleCtrl',
   }
 });
 
+// a service to create the new assignment. called from the moduleCtrl controller
 app.service('NewAssignmentService', function (AssignmentService, $rootScope, UserService, $routeParams){
   $rootScope.users = UserService.getUsers();
   $rootScope.modules = UserService.getModules();
@@ -335,6 +367,7 @@ app.service('NewAssignmentService', function (AssignmentService, $rootScope, Use
   }
 });
 
+//a service to create a new module and push it to a user's arrray of modules
 app.service('NewModuleService', function (UserService){
   this.newModule = function(moduleData) {
     var modules = UserService.getModules() || [];
@@ -342,6 +375,7 @@ app.service('NewModuleService', function (UserService){
   }
 });
 
+// a service to create a user
 app.service('NewUserService', function (UserService){
   this.registerUser = function(userData) {
     var users = UserService.getUsers() || [];
@@ -349,13 +383,13 @@ app.service('NewUserService', function (UserService){
   }
 });
 
+// a contoller which handles the signing up of new users.
 app.controller('NewUserController', function ($scope, NewUserService, $location, $rootScope, UserService){
 
   $scope.registerUser = function() {
     var users = UserService.getUsers();
-    var signup = true;
+    var signup = true; // if this variable is still true by the end of this function, then the user may sign up
 
-    debugger;
     if($scope.user.firstName === undefined || 
       $scope.user.secondName === undefined ||
       $scope.user.age === undefined ||
@@ -394,10 +428,11 @@ app.controller('NewUserController', function ($scope, NewUserService, $location,
       $rootScope.loggedIn = true;
       $location.path('/dashboard');
     }
-    
+
   }
 });
 
+// controls the assignment detail view. lists assignments and provides functionality to alter them 
 app.controller('assignCtrl', function ($scope, $rootScope, $routeParams, UserService) {
  var users = UserService.getUsers();
  $scope.users = UserService.getUsers();
@@ -420,6 +455,7 @@ $scope.editAssignment = function (assignment){
 }
 });
 
+// a factory service to return all assignments currently belonging to a specific module.
 app.factory('AssignmentService', ['$http', '$rootScope', '$routeParams', function ($http, $rootScope, $routeParams){
 
   $rootScope.assignments = [];
@@ -438,6 +474,7 @@ app.factory('AssignmentService', ['$http', '$rootScope', '$routeParams', functio
   return api;
 }]);
 
+// a factory service to get a user's timetable.
 app.factory('TimetableService', ['$http', '$rootScope', '$routeParams', function ($http, $rootScope, $routeParams){
   $rootScope.timetable = [];
   var api = {
@@ -454,6 +491,8 @@ app.factory('TimetableService', ['$http', '$rootScope', '$routeParams', function
 return api
 }]);
 
+
+// a factory service to return either all users or all modules belonging to the currently logged in user
 app.factory('UserService', ['$http', '$rootScope', function ($http, $rootScope){
   $rootScope.users = [];
   $rootScope.modules = [];
@@ -479,7 +518,7 @@ app.factory('UserService', ['$http', '$rootScope', function ($http, $rootScope){
 return api
 }]);
 
-// user model
+// a model of the user object
 function User(data) {
   this.firstName = data.firstName || "",
   this.secondName = data.secondName || "",
@@ -492,6 +531,7 @@ function User(data) {
   this.modules = data.modules || []
 }
 
+// a model of the module object
 function Module(data, modulesLength) {
   this.id = (modulesLength+1).toString() || "",
   this.title = data.title || "",
@@ -499,6 +539,7 @@ function Module(data, modulesLength) {
   this.assignments = data.assignments || []
 }
 
+// a model of the assignment object
 function Assignment(data, assignmentsLength, moduleId) {
   this.title = data.title || "",
   this.snippet = data.snippet || "",
@@ -509,6 +550,7 @@ function Assignment(data, assignmentsLength, moduleId) {
   this.details = data.details || ""
 }
 
+// a simple model of the timetable object. by default it is empty on signup
 function Timetable() {
   return [{ "day":"Monday", "9am":"", "10am":"", "11am":"", "12pm":"", "1pm":"", "2pm":"", "3pm":"", "4pm":"" }, { "day":"Tuesday", "9am":"", "10am":"", "11am":"", "12pm":"", "1pm":"", "2pm":"", "3pm":"", "4pm":"" }, { "day":"Wednesday", "9am":"", "10am":"", "11am":"", "12pm":"", "1pm":"", "2pm":"", "3pm":"", "4pm":"" }, { "day":"Thursday", "9am":"", "10am":"", "11am":"", "12pm":"", "1pm":"", "2pm":"", "3pm":"", "4pm":"" }, { "day":"Friday", "9am":"", "10am":"", "11am":"", "12pm":"", "1pm":"", "2pm":"", "3pm":"", "4pm":"" }];
 }

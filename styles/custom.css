@@ -24,7 +24,7 @@
 }
 
 .navbar-link-item{
-    color: #FFFFFF;
+  color: #FFFFFF;
 
 }
 
@@ -79,22 +79,22 @@
 }
 
 .navbar-link-item{
-    color: #E4E4E4 !important;
+  color: #E4E4E4 !important;
 
 }
 
 .navbar-link-item:hover{
-    color: #FFFFFF !important;
-    -webkit-stroke-width: 5.3px;
-      -webkit-stroke-color: #FFFFFF;
-      -webkit-fill-color: #FFFFFF;
-      text-shadow: 1px 0px 20px white;
+  color: #FFFFFF !important;
+  -webkit-stroke-width: 5.3px;
+  -webkit-stroke-color: #FFFFFF;
+  -webkit-fill-color: #FFFFFF;
+  text-shadow: 1px 0px 20px white;
 
 }
 
 .admin-button{
   color: #FFFFFF !important;
-      text-shadow: 1px 0px 20px white;
+  text-shadow: 1px 0px 20px white;
 }
 
 .navbar-fixed-top:hover{
@@ -250,6 +250,6 @@ footer{
 }
 
 .icon{
-    width:30px; /* you can use % */
-    height: auto;
+  width:30px; /* you can use % */
+  height: auto;
 }
