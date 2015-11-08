@@ -1,8 +1,14 @@
 <nav>
   <ul class="nav nav-pills nav-stacked affix">
+    
     <li ng-class="{active: $route.current.activetab == 'dashboard'}"><a data-toggle="pill" href="#/dashboard" data-target="#dashboard"><span class="glyphicon glyphicon-home"></span> Dashboard</a></li>
-    <li ng-class="{active: $route.current.activetab == 'modules'}"><a data-toggle="pill"  href="#/modules" data-target="#modules"><span class="glyphicon glyphicon-book"></span> Modules</a></li>
-    <li ng-class="{active: $route.current.activetab == 'assignments'}"><a data-toggle="pill" href="#/assignments" data-target="#assignments"><span class="glyphicon glyphicon-pencil"></span> Assignments</a></li>
-    <li ng-class="{active: $route.current.activetab == 'profile'}"><a data-toggle="pill" href="#/profile" data-target="#profile"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
+    
+    <li ng-if="user.role!=='admin'" ng-class="{active: $route.current.activetab == 'modules'}"><a data-toggle="pill"  href="#/modules" data-target="#modules"><span class="glyphicon glyphicon-book"></span> Modules</a></li>
+    
+    <li ng-if="user.role!=='admin'" ng-class="{active: $route.current.activetab == 'assignments'}"><a data-toggle="pill" href="#/assignments" data-target="#assignments"><span class="glyphicon glyphicon-pencil"></span> Assignments</a></li>
+    
+    <li ng-if="user.role!=='admin'" ng-class="{active: $route.current.activetab == 'timetable'}"><a data-toggle="pill" href="#/timetable" data-target="#timetable"><span class="glyphicon glyphicon-bookmark"></span> Timetable</a></li>
+    
+    <li ng-if="user.role!=='admin'" ng-class="{active: $route.current.activetab == 'profile'}"><a data-toggle="pill" href="#/profile" data-target="#profile"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
   </ul>
 </nav>

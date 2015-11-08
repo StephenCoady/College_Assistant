@@ -34,7 +34,7 @@
       </div>
     </form>
     <div class="row">
-      <div class="col-sm-4"  ng-repeat="module in modules | filter:{ title: query }">
+      <div class="col-sm-4"  ng-repeat="module in modules track by $index | filter:{ title: query }" ng-if="module!==undefined">
         <div class="card text-center">
           <span class="card-header">
             <b>{{ module.title }}</b>

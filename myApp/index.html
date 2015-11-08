@@ -9,9 +9,12 @@
   <meta name="description" content="">
   <meta name="author" content="">
   <link href="../styles/bootstrap.css" rel="stylesheet" type="text/css">
+  <link href="../styles/alertify.core.css" rel="stylesheet" type="text/css">
+  <link href="../styles/alertify.default.css" rel="stylesheet" type="text/css">
   <link href="../styles/custom.css" rel="stylesheet" type="text/css">
   <script src="../support/scripts/jquery.min.js"></script>
   <script src="../support/scripts/bootstrap.min.js"></script>
+  <script src="../support/scripts/alertify.min.js"></script>
   
 </head>
 
@@ -19,31 +22,55 @@
   <script src="../support/scripts/angular.min.js"></script>
   <script src="../support/scripts/angular-route.min.js"></script>
   <script src="app.js"></script>
-    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-      <div class="navbar-header">
-        <a class="navbar-brand" href="#"><img class="brand-image" alt="Brand" src="../support/files/c-icon.png"></a>
-      </div>
-        <nav class="nav navbar-nav navbar-left">
-          <li><a ng-if="!loggedIn" href="#/login" data-target="#login" class = "btn btn-link"><span class="glyphicon glyphicon-user"></span> Log In</a></li>
-          <li><a ng-if="!loggedIn" href="#/signup" data-target="#signup" class = "btn btn-link"><span class="glyphicon glyphicon-heart"></span> Sign up</a></li>
-          <li><a ng-if="loggedIn" href="#/dashboard" data-target="#dashboard" class = "btn btn-link">Dashboard</a></li>
-        </nav>
-        <nav class ="nav navbar-nav navbar-right">
-          <li ng-if="loggedIn" ><a ng-click="logout()" href="#/" class = "btn btn-link"><span class="glyphicon glyphicon-off"></span>  Log Out</a></li>
-        </nav>
-    </nav>
-<div class="container">
-    <div ng-view >
-    <!-- Dynamic page content goes here -->
+  <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#"><img class="brand-image" alt="Brand" src="../support/files/c-icon.png"></a>
     </div>
-</div>
-<div class="container fixed-bottom">
-    <div class="jumbotron">
-      <p>
-        Page developed by Stephen Coady
-      </p>
+    <nav class="nav navbar-nav navbar-left">
+      <li><a ng-if="!loggedIn" href="#/login" data-target="#login" class = "btn btn-link navbar-link-item"><span class="glyphicon glyphicon-user"></span> Log In</a></li>
+      <li><a ng-if="!loggedIn" href="#/signup" data-target="#signup" class = "btn btn-link navbar-link-item"><span class="glyphicon glyphicon-heart"></span> Sign up</a></li>
+    </nav>
+    <nav class ="nav navbar-nav navbar-right">
+      <li ng-if="user.role==='admin'" ><a class = "btn btn-link navbar-link-item admin-button"><span class="glyphicon glyphicon-asterisk"></span> Administrator Account</a></li>
+      <li ng-if="loggedIn" ><a ng-click="logout()" href="#/" class = "btn btn-link navbar-link-item"><span class="glyphicon glyphicon-off"></span>  Log Out</a></li>
+    </nav>
+  </nav>
+  <div class="container">
+    <div ng-view >
+      <!-- Dynamic page content goes here -->
     </div>
   </div>
+  <footer class="footer-distributed">
+
+    <div class="footer-right">
+
+      <a href="#"><img class="icon" src='../support/files/facebook.png'/></a>
+      <a href="#"><img class="icon" src='../support/files/twitter.png'/></a>
+      <a href="#"><img class="icon" src='../support/files/linkedin.png'/></a>
+      <a href="#"><img class="icon" src='../support/files/github.jpg'/></a>
+
+    </div>
+
+    <div class="footer-left">
+
+      <p class="footer-links">
+        <a href="#">Home</a>
+        ·
+        <a href="#">Blog</a>
+        ·
+        <a href="#">Pricing</a>
+        ·
+        <a href="#">About</a>
+        ·
+        <a href="#">Faq</a>
+        ·
+        <a href="#">Contact</a>
+      </p>
+
+      <p>Stephen Coady &copy; 2015</p>
+    </div>
+
+  </footer>
 </body>
 
 </html>

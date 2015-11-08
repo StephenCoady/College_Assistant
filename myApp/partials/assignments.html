@@ -1,12 +1,12 @@
 <div class="row">
   <div class="col-sm-2" ng-include="'./partials/sidebar.html'">
   </div>
-  <div class="col-sm-10">
+  <div class="col-sm-8">
     <div class="row">
-      <div class="col-sm-2">
+      <div class="col-sm-4">
         <h3>Your Assignments</h3>
       </div>
-      <div class="col-sm-8">
+      <div class="col-sm-6">
        
       </div>
       <div class="col-sm-2">
@@ -29,7 +29,7 @@
         </thead>
 
         <tbody ng-repeat="assignment in assignments | filter:{ title: query, complete: completion} | orderBy:orderProp" >
-            <tr>
+            <tr ng-if="!modules[moduleId]">
             <td><a href="#/modules/{{assignment.moduleId}}/{{assignment.id}}">{{ assignment.title }}</a></td>
             <td><a href="#/modules/{{assignment.moduleId}}"> {{ modules[assignment.moduleId].title }}</a></td>
             <td>{{ assignment.date }}</td>
@@ -38,5 +38,7 @@
           </tr>
         </tbody>
         </table>
+  </div>
+  <div class="col-sm-2">
   </div>
 </div>

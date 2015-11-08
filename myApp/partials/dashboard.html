@@ -1,9 +1,191 @@
+<div class="row">
+  <div class="col-sm-2" ng-include="'./partials/sidebar.html'">
+  </div>
+  <div class="col-sm-10">
+    <div class = "row">
+      <h3 class="text-center"> Welcome, {{ loggedInUser.firstName }}</h3>
+    </div>
+    <div class="row">
 
+    <!-- ###############################
+    ####################################
+    ## Deals with the admin user type ##
+    ####################################
+    #################################### -->
+
+    <div ng-if="user.role==='admin'">
       <div class="row">
-        <div class="col-sm-2" ng-include="'./partials/sidebar.html'">
+
+        <table class="table table-bordered">
+          <thead>
+            <th class="firstName">First Name</th>
+            <th class="secondName">Surname</th>
+            <th class="email">Email</th>
+            <th class="username">Username</th>
+            <th class ="password">Password</th>
+            <th class ="age">Age</th>
+            <th class ="password">Course</th>
+            <th class="button1"></th>
+            <th class ="button2" ng-if="users.length > 0"></th>
+          </thead>
+
+          <tbody ng-repeat="user in users" ng-switch="user.state">
+
+            <!-- Edit Mode Template -->
+            <tr ng-switch-when="edit">
+              <td>
+                <input type="text" class="form-control" ng-model="user.firstName" />
+              </td>
+              <td>
+                <input type="text" class="form-control" ng-model="user.secondName" />
+              </td>
+              <td>
+                <input type="text" class="form-control" ng-model="user.email" />
+              </td>
+              <td>
+                <input type="text" class="form-control" ng-model="user.username" />
+              </td>
+              <td>
+                <input type="text" class="form-control" ng-model="user.password" />
+              </td>
+              <td>
+                <input type="text" class="form-control" ng-model="user.age" />
+              </td>
+              <td>
+                <input type="text" class="form-control" ng-model="user.course" />
+              </td>
+              <td>
+                <input type="button" class="btn btn-success" ng-click="saveUser(user)" value="Save" />
+              </td>
+              <td>
+                <input type="button" class="btn btn-danger" ng-click="cancelEdit(user)" value="Cancel" />
+              </td>
+            </tr>
+
+            <!-- Deleted Mode Template -->
+            <tr class="danger" ng-switch-when="deleted">
+              <td>{{user.firstName}}</td>
+              <td>{{user.secondName}}</td>
+              <td>{{user.email}}</td>
+              <td>{{user.username}}</td>
+              <td>{{user.password}}</td>
+              <td>{{user.age}}</td>
+              <td>{{user.course}}</td>
+              <td>
+                <input type="button" class="btn btn-danger" ng-click="confirmDelete($index)" value="Confirm" />
+              </td>
+              <td>
+                <input type="button" class="btn btn-success" ng-click="undoDelete(user)" value="Undo"/>
+              </td>
+            </tr>
+
+            <!-- Normal Mode Template -->
+            <tr ng-switch-default>
+              <td>{{user.firstName}}</td>
+              <td>{{user.secondName}}</td>
+              <td>{{user.email}}</td>
+              <td>{{user.username}}</td>
+              <td>{{user.password}}</td>
+              <td>{{user.age}}</td>
+              <td>{{user.course}}</td>
+              <td>
+                <input type="button" class="btn btn-primary" ng-click="editUser(user)" value="Edit" />
+              </td>
+              <td>
+                <input type="button" class="btn btn-danger" ng-click="deleteUser(user)" value="Delete"/>
+              </td>
+            </tr>
+          </tbody>
+
+        </table>
+      </div>
+    </div>
+
+<!-- ###############################
+    ####################################
+    ## Deals with a normal user type ##
+    ####################################
+    #################################### -->
+
+    <div ng-if="user.role!=='admin'">
+      <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+          <p class="text-center">Welcome to your College Assistant. Below you will find all the necessary information about your account to help you with college life. Choose what you would like to do or you can also view and edit your profile further down.</p>
         </div>
-        <div class="col-sm-10">
-          <h3> Welcome, {{ loggedInUser.firstName }}</h3>
-            <p>This is your college assistant!</p>
+        <div class="col-md-3"></div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="card text-center">
+            <span class="card-header">
+              <b>Assignments</b>
+            </span>
+            <div class="card-block">
+              <h4 class="card-title"></h4>
+              <p class="card-text">Currently Due: {{ assignCount }}</p>
+              <a href="#/assignments/" class="btn btn-primary btn-sm">Assignments</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="card text-center">
+            <span class="card-header">
+              <b>Modules</b>
+            </span>
+            <div class="card-block">
+              <h4 class="card-title"></h4>
+              <p class="card-text">You currently have {{ modules.length }} modules</p>
+              <a href="#/modules/" class="btn btn-primary btn-sm">Modules</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="card text-center">
+            <span class="card-header">
+              <b>Timetable</b>
+            </span>
+            <div class="card-block">
+              <h4 class="card-title"></h4>
+              <p class="card-text">View your timetable here!</p>
+              <a href="#/timetable/" class="btn btn-primary btn-sm">Timetable</a>
+            </div>
+          </div>
         </div>
       </div>
+      <hr>
+      <div class="row">
+        <div class="col-sm-4">
+          <img class="img-responsive" style="padding: 5px" src='../support/files/flower-bl.png'/>
+        </div>
+        <div class="col-sm-4">
+          <div class="card text-center">
+            <span class="card-header">
+              <b>Your Profile</b>
+            </span>
+            <div class="card-block">
+              <h4 class="card-title"></h4>
+              <p class="card-text">You can view and edit your profile here!</p>
+              <a href="#/profile/" class="btn btn-primary btn-sm">Profile</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+        <img class="img-responsive" style="padding: 5px" src='../support/files/flower-br.png'/>
+        </div>
+      </div>
+
+
+
+    </div>
+
+
+
+
+
+
+
+  </div>
+</div>
+</div>

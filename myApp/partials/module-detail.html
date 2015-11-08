@@ -11,13 +11,14 @@
         <table class="table table-bordered table-hover">
           <thead>
             <th class="title">Due Assignments:</th>
-            <th colspan="2">Due:</th>
+            <th colspan="3">Due:</th>
           </thead>
           <tbody ng-repeat="assignment in assignments">
             <tr ng-if="!assignment.complete">
               <td><a href="#/modules/{{module.id}}/{{assignment.id}}">{{ assignment.title }}</a></td>
               <td>{{ assignment.date }}</td>
               <td><button type="submit" class="btn btn-success btn-xs" ng-click="changeAssignment($index)"><span class="glyphicon glyphicon-ok"></span> </button></td>
+              <td><a href="#/modules/{{module.id}}/{{assignment.id}}" class="btn btn-info btn-xs"><span class="glyphicon glyphicon-pencil"></span></a></td>
             </tr>
           </tbody>
         </table>

@@ -1,0 +1,49 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-2" ng-include="'./partials/sidebar.html'">
+    </div>
+    <div class="col-sm-8">
+      <div class="row">
+        <h3>Your Timetable</h3>
+        <p>Please note: Currently this feature is not complete, time slots do reflect real modules belonging to the user but currently changing the timetable is not possible.</p>
+      </div>
+
+
+      <div class="row">
+        <table class="table table-bordered table-hover">
+          <thead>
+            <th></th>
+            <th>9-10</th>
+            <th>10-11</th>
+            <th>11-12</th>
+            <th>12-1</th>
+            <th>1-2</th>
+            <th>2-3</th>
+            <th>3-4</th>
+            <th>4-5</th>
+          </thead>
+          <tbody>
+            <tr ng-repeat="class in timetable">
+              <td><b>{{ class.day }}</b></td>
+              <td>{{ modules[class.9am-1].title }}</a></td>
+              <td>{{ modules[class.10am-1].title }}</td>
+              <td>{{ modules[class.11am-1].title }}</td>
+              <td>{{ modules[class.12pm-1].title }}</td>
+              <td>{{ modules[class.1pm-1].title }}</td>
+              <td>{{ modules[class.2pm-1].title }}</td>
+              <td>{{ modules[class.3pm-1].title }}</td>
+              <td>{{ modules[class.4pm-1].title }}</td>
+            </tr>
+
+          </tbody>
+
+
+        </table>
+      </div>
+
+
+    </div>
+    <div class="col-sm-2">
+    </div>
+  </div>
+</div>

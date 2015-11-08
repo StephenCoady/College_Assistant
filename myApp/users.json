@@ -1,12 +1,83 @@
 [
   {
+    "firstName":"Admin",
+    "secondName":"",
+    "email":"",
+    "username":"admin",
+    "password":"admin",
+    "age":"",
+    "course":"",
+    "timetable":
+    [],
+    "modules":
+    []
+  },
+  {
     "firstName":"Stephen",
     "secondName":"Coady",
     "email":"scoady2@gmail.com",
-    "username":"admin",
-    "password":"admin",
+    "username":"user",
+    "password":"pass",
     "age":"26",
     "course":"Applied Computing",
+    "timetable":
+    [ 
+      {
+              "day":"Monday",
+              "9am":"1",
+              "10am":"",
+              "11am":"3",
+              "12pm":"",
+              "1pm":"2",
+              "2pm":"2",
+              "3pm":"",
+              "4pm":""
+      },
+      {
+              "day":"Tuesday",
+              "9am":"1",
+              "10am":"1",
+              "11am":"",
+              "12pm":"",
+              "1pm":"3",
+              "2pm":"3",
+              "3pm":"3",
+              "4pm":""
+      },
+      {
+              "day":"Wednesday",
+              "9am":"1",
+              "10am":"2",
+              "11am":"3",
+              "12pm":"4",
+              "1pm":"",
+              "2pm":"",
+              "3pm":"1",
+              "4pm":""
+      },
+      {
+              "day":"Thursday",
+              "9am":"1",
+              "10am":"1",
+              "11am":"2",
+              "12pm":"",
+              "1pm":"",
+              "2pm":"2",
+              "3pm":"3",
+              "4pm":"4"
+      },
+      {
+              "day":"Friday",
+              "9am":"2",
+              "10am":"2",
+              "11am":"3",
+              "12pm":"",
+              "1pm":"1",
+              "2pm":"3",
+              "3pm":"4",
+              "4pm":"4"
+      }
+    ],
     "modules":
     [
       {
@@ -41,7 +112,7 @@
                             "details":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse molestie nisl mi, ut porta libero sollicitudin vel. Maecenas sit amet euismod ipsum. Curabitur in eros auctor, pharetra est quis, bibendum dolor. Vivamus vel viverra dolor. Quisque at purus auctor, tincidunt risus vitae, feugiat libero. Integer auctor purus at eros vehicula blandit. Pellentesque vel erat leo. Sed lobortis dolor ac massa euismod, at aliquam mauris tincidunt. Proin dui massa, vestibulum nec ex id, eleifend dignissim mi. Sed at vehicula mi. Duis commodo malesuada lorem, vitae ultrices magna efficitur auctor. Phasellus quis euismod dui. Proin imperdiet ultrices velit, vel gravida nisi pretium eget. Fusce mollis dignissim ante, finibus dignissim metus."
                           }
                         ],
-          "lecturer": "Mr Programmer"
+        "lecturer": "Mr Programmer"
       },
       {
           "id":"2",
@@ -154,6 +225,64 @@
     "username":"dbut",
     "password":"dbut",
     "age":"26",
+    "timetable":
+    [ 
+      {
+              "day":"Monday",
+              "9am":"1",
+              "10am":"",
+              "11am":"3",
+              "12pm":"",
+              "1pm":"2",
+              "2pm":"2",
+              "3pm":"",
+              "4pm":""
+      },
+      {
+              "day":"Tuesday",
+              "9am":"1",
+              "10am":"1",
+              "11am":"",
+              "12pm":"",
+              "1pm":"3",
+              "2pm":"3",
+              "3pm":"3",
+              "4pm":""
+      },
+      {
+              "day":"Wednesday",
+              "9am":"1",
+              "10am":"2",
+              "11am":"3",
+              "12pm":"4",
+              "1pm":"",
+              "2pm":"",
+              "3pm":"1",
+              "4pm":""
+      },
+      {
+              "day":"Thursday",
+              "9am":"1",
+              "10am":"1",
+              "11am":"2",
+              "12pm":"",
+              "1pm":"",
+              "2pm":"2",
+              "3pm":"3",
+              "4pm":"4"
+      },
+      {
+              "day":"Friday",
+              "9am":"2",
+              "10am":"2",
+              "11am":"3",
+              "12pm":"",
+              "1pm":"1",
+              "2pm":"3",
+              "3pm":"4",
+              "4pm":"4"
+      }
+    ],
     "modules":
     [
       {

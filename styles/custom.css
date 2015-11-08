@@ -13,8 +13,25 @@
 .navbar .navbar-right {
   float: right;
   margin-right: 10px;
+  background-color: #292C2F;
+  color: #FFFFFF;
   
 }
+
+.navbar-fixed-top{
+  background-color: #292C2F;
+  color: #FFFFFF;
+}
+
+.navbar-link-item{
+    color: #FFFFFF;
+
+}
+
+.navbar-fixed-top:hover{
+  color: #FFFFFF;
+}
+
 
 .navbar > .active > a,
 .navbar > .active > a:hover, .navbar > li > a:hover {
@@ -24,8 +41,8 @@
   border-bottom-width: 4px;
   border-bottom-style: solid;
   border-bottom-color: #FF6600;
-  color: #000 !important;
-  background-color: transparent !important;
+  color: #ffffff;
+  background-color: transparent!important;
 }
 
 .assignment-snippet {
@@ -41,16 +58,49 @@
   border-bottom-width: 4px;
   border-bottom-style: solid;
   border-bottom-color: #FF6600;
-  color: #000 !important;
-  background-color: transparent !important;
+  color: #000!important;
+  background-color: transparent!important;
 }
 .nav-pills > li > a{
   border-radius:0px;
 }
 
-textarea {
- resize: none;
+.navbar .navbar-right {
+  float: right;
+  margin-right: 10px;
+  background-color: #292C2F;
+  color: #FFFFFF !important;
+  
 }
+
+.navbar-fixed-top{
+  background-color: #292C2F;
+  color: #FFFFFF !important;
+}
+
+.navbar-link-item{
+    color: #E4E4E4 !important;
+
+}
+
+.navbar-link-item:hover{
+    color: #FFFFFF !important;
+    -webkit-stroke-width: 5.3px;
+      -webkit-stroke-color: #FFFFFF;
+      -webkit-fill-color: #FFFFFF;
+      text-shadow: 1px 0px 20px white;
+
+}
+
+.admin-button{
+  color: #FFFFFF !important;
+      text-shadow: 1px 0px 20px white;
+}
+
+.navbar-fixed-top:hover{
+  color: #FFFFFF !important;
+}
+
 
 body {
   padding-top:65px;
@@ -116,5 +166,90 @@ body {
 
 .card-header{
   font-size: 22px;
+}
 
+.footer-distributed{
+  background-color: #292c2f;
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+  box-sizing: border-box;
+  width: 100%;
+  text-align: left;
+  font: normal 16px sans-serif;
+
+  padding: 45px 50px;
+  margin-top: 80px;
+}
+
+.footer-distributed .footer-left p{
+  color:  #8f9296;
+  font-size: 14px;
+  margin: 0;
+}
+
+/* Footer links */
+
+.footer-distributed p.footer-links{
+  font-size:18px;
+  font-weight: bold;
+  color:  #ffffff;
+  margin: 0 0 10px;
+  padding: 0;
+}
+
+.footer-distributed p.footer-links a{
+  display:inline-block;
+  line-height: 1.8;
+  text-decoration: none;
+  color:  inherit;
+}
+
+.footer-distributed .footer-right{
+  float: right;
+  margin-top: 6px;
+  max-width: 180px;
+}
+
+.footer-distributed .footer-right a{
+  display: inline-block;
+  width: 35px;
+  height: 35px;
+  background-color:  #33383b;
+  border-radius: 2px;
+
+  font-size: 20px;
+  color: #ffffff;
+  text-align: center;
+  line-height: 35px;
+
+  margin-left: 3px;
+}
+
+/* If you don't want the footer to be responsive, remove these media queries */
+
+@media (max-width: 600px) {
+
+  .footer-distributed .footer-left,
+  .footer-distributed .footer-right{
+    text-align: center;
+  }
+
+  .footer-distributed .footer-right{
+    float: none;
+    margin: 0 auto 20px;
+  }
+
+  .footer-distributed .footer-left p.footer-links{
+    line-height: 1.8;
+  }
+}
+
+footer{
+  position: relative;
+  top:350px;
+  bottom: 0;
+}
+
+.icon{
+    width:30px; /* you can use % */
+    height: auto;
 }

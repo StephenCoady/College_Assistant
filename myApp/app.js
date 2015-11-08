@@ -4,6 +4,13 @@ app.config(['$routeProvider',
   function ($routeProvider, $rootScope) {
     $routeProvider
     .when('/', {
+      resolve: {
+        "check": function($location, $rootScope) {
+          if($rootScope.loggedIn){
+            $location.path('/dashboard');
+          }
+        }
+      },
       templateUrl: './partials/landing.html'
     })
     .when('/login', {
@@ -84,6 +91,18 @@ app.config(['$routeProvider',
       controller: "profileCtrl",
       activetab: 'profile'
     })
+    .when('/timetable', {
+      resolve: {
+        "check": function($location, $rootScope) {
+          if(!$rootScope.loggedIn){
+            $location.path('/');
+          }
+        }
+      },
+      templateUrl: './partials/timetable.html',
+      controller: "timetableCtrl",
+      activetab: 'timetable'
+    })
     .otherwise({
       redirectTo: '/'
     });
@@ -92,25 +111,52 @@ app.config(['$routeProvider',
 app.controller('myCtrl', function($scope, $rootScope) {
   $rootScope.loggedIn = false;
 
+  $scope.user = {
+    role: 'public'
+  };
+
   $scope.logout = function(){
+    $scope.user = {
+      role: 'public'
+    };
     $rootScope.loggedIn = false;
     $rootScope.username = null;
+    alertify.success("See you soon!");
   };
 });
 
-app.controller('profileCtrl', function($scope, $rootScope, $route) {
-  $scope.route = $route;
+app.controller('profileCtrl', function ($scope, $rootScope, $route, UserService) {
+  $scope.$route = $route;
+
+  var users = UserService.getUsers()
+  for (x in users){
+    if (users[x].username === $rootScope.username){
+      $scope.user = users[x];
+    }
+  }
+
+  $scope.editUser = function (user){
+  $scope.user = user;
+  alertify.success("Information Updated!")
+}
 });
 
-app.controller('loginCtrl', function($scope, $location, $rootScope, $http, UserService) {
-  $scope.username = "admin";
-  $scope.password = "admin";
+app.controller('timetableCtrl', function ($scope, $rootScope, $route, TimetableService, UserService) {
+  $scope.$route = $route;
+  $rootScope.users = UserService.getUsers();
+  $scope.modules = UserService.getModules();
+  $scope.timetable = TimetableService.getTimetable();
+
+});
+
+
+app.controller('loginCtrl', function ($scope, $location, $rootScope, UserService) {
+  $scope.username = "user";
+  $scope.password = "pass";
   $scope.submit = function(){
     var usrname = $scope.username;
     var pass = $scope.password;
-
     var users = UserService.getUsers();
-
     for (x in users) {
       if (users[x].username === $scope.username){
         if(users[x].password === $scope.password){
@@ -118,40 +164,89 @@ app.controller('loginCtrl', function($scope, $location, $rootScope, $http, UserS
         }
       }
     }
-    if(realUser){
-      alert("Success!")
-    }
 
     if(realUser) {
+      alertify.success("Successfully logged in!");
       $rootScope.username = $scope.username
-
       $rootScope.loggedIn = true;
       $location.path('/dashboard');
+      if($rootScope.username === 'admin'){
+        debugger;
+        $scope.user.role = 'admin';
+      }
 
 
     } else {
-      alert("Incorrect username or password.");
+      alertify.error("Incorrect username or password.");
     }
 
   };
 
 });
 
-app.controller('dashboardCtrl',
-  function($scope, $rootScope, $location, UserService, $route) {
-    $scope.$route = $route;
-    var username = $rootScope.username;
+app.controller('dashboardCtrl', function ($scope, $rootScope, $location, UserService, $route) {
+  $scope.$route = $route;
+  var username = $rootScope.username;
+  $scope.modules = UserService.getModules();
 
-    $scope.users = UserService.getUsers()
-    for (x in $scope.users){
-      if ($scope.users[x].username === $rootScope.username){
-        $scope.loggedInUser = $scope.users[x];
+  $scope.users = UserService.getUsers()
+  for (x in $scope.users){
+    if ($scope.users[x].username === $rootScope.username){
+      $scope.loggedInUser = $scope.users[x];
+    }
+  }
+
+  $scope.assignCount = 0;
+
+  for (x in $scope.loggedInUser.modules){
+    for (y in $scope.loggedInUser.modules[x].assignments){
+      if(!$scope.loggedInUser.modules[x].assignments[y].complete){
+        $scope.assignCount += 1;
       }
     }
+  }
 
-    $scope.modules = $scope.loggedInUser.modules;
+  $scope.editUser = function(user) {
+    user.oldFirstName = user.firstName;
+    user.oldSecondName = user.secondName;
+    user.oldEmail = user.email;
+    user.oldUsername = user.username;
+    user.oldPassword = user.password;
+    user.oldAge = user.age;
+    user.oldCourse = user.course;
+    user.state = "edit";
+  }
 
-  })
+  $scope.deleteUser = function(user) {
+    user.state = "deleted";
+  }
+
+  $scope.confirmDelete = function(index) {
+    if ($scope.users[index].state == "deleted") {
+      $scope.users.splice(index, 1);       
+    }
+  }
+
+  $scope.undoDelete = function(user) {
+   user.state = "normal";
+ }
+
+ $scope.saveUser = function(user) {
+  user.state = "normal";
+}
+
+$scope.cancelEdit = function (user) {
+  user.firstName = user.oldFirstName;
+  user.secondName = user.oldSecondName;
+  user.email = user.oldEmail;
+  user.username = user.oldUsername;
+  user.password = user.oldPassword;
+  user.age = user.oldAge;
+  user.course = user.oldCourse;
+  user.state = "normal";
+}
+
+})
 
 app.controller('allModuleCtrl',
   function ($scope, $rootScope, $location, UserService, $route, NewModuleService, AssignmentService) {
@@ -165,16 +260,18 @@ app.controller('allModuleCtrl',
         $scope.loggedInUser = users[x];
       }
     }
-    $scope.modules = $scope.loggedInUser.modules;
+    $scope.modules = UserService.getModules();
+    debugger;
     $scope.newModule = function (){
       NewModuleService.newModule($scope.module);
+      alertify.success("Successfully created module: " + $scope.module.title);
       $scope.module = new Module({});
     }
 
     $scope.confirmDelete = function(index){
       debugger;
-     $scope.modules.splice(index, 1);
-     AssignmentService.getAssignments();
+      alertify.error("Successfully deleted module: " + $scope.modules[index].title);
+      delete $scope.modules[index];
     }
   });
 
@@ -213,16 +310,18 @@ app.controller('moduleCtrl',
   $rootScope.module = $scope.module;
   $scope.assignments = $scope.module.assignments;
   $scope.newAssignment = function (){
+    alertify.success("New Assignment successfully created.");
     NewAssignmentService.newAssignment($scope.assignment);
     $scope.assignment = new Assignment({});
   }
   $scope.changeAssignment = function(index){
-    
+
     if ($scope.assignments[index].complete === true){
-        $scope.assignments[index].complete = false;
+      $scope.assignments[index].complete = false;
     }
     else{
-        $scope.assignments[index].complete = true;
+      $scope.assignments[index].complete = true;
+      alertify.success("Whoop, complete!");
     }
   }
 });
@@ -255,26 +354,46 @@ app.controller('NewUserController', function ($scope, NewUserService, $location,
   $scope.registerUser = function() {
     var users = UserService.getUsers();
     var signup = true;
-    for (x in users){
-      if (users[x].username === $scope.user.username){
-        alert("Sorry, that username is already taken.")
-        signup = false;
-        break;
-      }
-      else if ($scope.user.password != $scope.user.password2){
-        alert("Sorry, your passwords must match.")
-        signup = false;
-        break;
-      }
-      if (signup) {
-        NewUserService.registerUser($scope.user);
-        $rootScope.username = $scope.user.username;
-        $scope.user = new User({});
-        $rootScope.loggedIn = true;
-        $location.path('/dashboard');
-      }
+
+    debugger;
+    if($scope.user.firstName === undefined || 
+      $scope.user.secondName === undefined ||
+      $scope.user.age === undefined ||
+      $scope.user.email === undefined ||
+      $scope.user.username === undefined ||
+      $scope.user.password === undefined ||
+      $scope.user.password2 === undefined
+      )
+    {
+      alertify.error("Sorry, all fields must be filled in.")
+      signup = false;
     }
 
+    for (x in users){
+      if (users[x].username === $scope.user.username){
+        alertify.error("Sorry, that username is already taken.")
+        signup = false;
+        break;
+      }
+      if ($scope.user.password !== $scope.user.password2){
+        alertify.error("Sorry, your passwords must match.")
+        signup = false;
+        break;
+      }
+      if (users[x].email === $scope.user.email){
+        alertify.error("Sorry, that email is already in use.")
+        signup = false;
+        break;
+      }
+    }
+    if (signup) {
+      NewUserService.registerUser($scope.user);
+      alertify.success("Welcome, " + $scope.user.firstName + "!");
+      $rootScope.username = $scope.user.username;
+      $scope.user = new User({});
+      $rootScope.loggedIn = true;
+      $location.path('/dashboard');
+    }
     
   }
 });
@@ -294,6 +413,11 @@ app.controller('assignCtrl', function ($scope, $rootScope, $routeParams, UserSer
     }
   }
 }
+
+$scope.editAssignment = function (assignment){
+  $scope.assignment = assignment;
+  alertify.success("Assignment Updated!")
+}
 });
 
 app.factory('AssignmentService', ['$http', '$rootScope', '$routeParams', function ($http, $rootScope, $routeParams){
@@ -312,6 +436,22 @@ app.factory('AssignmentService', ['$http', '$rootScope', '$routeParams', functio
     }
   }
   return api;
+}]);
+
+app.factory('TimetableService', ['$http', '$rootScope', '$routeParams', function ($http, $rootScope, $routeParams){
+  $rootScope.timetable = [];
+  var api = {
+   getTimetable : function() {
+    for (x in $rootScope.users){
+      if ($rootScope.users[x].username === $rootScope.username){
+        var user = $rootScope.users[x];
+      }
+    }
+    $rootScope.timetable = user.timetable;
+    return $rootScope.timetable;
+  }
+}
+return api
 }]);
 
 app.factory('UserService', ['$http', '$rootScope', function ($http, $rootScope){
@@ -348,6 +488,7 @@ function User(data) {
   this.password = data.password || "",
   this.age = data.age || "",
   this.course = data.course || "",
+  this.timetable = data.timetable || new Timetable(),
   this.modules = data.modules || []
 }
 
@@ -363,7 +504,11 @@ function Assignment(data, assignmentsLength, moduleId) {
   this.snippet = data.snippet || "",
   this.date = data.date || "",
   this.moduleId = moduleId || "",
-  this.complete = false,
+  this.complete = data.complete || false,
   this.id = (assignmentsLength+1).toString() || "",
   this.details = data.details || ""
+}
+
+function Timetable() {
+  return [{ "day":"Monday", "9am":"", "10am":"", "11am":"", "12pm":"", "1pm":"", "2pm":"", "3pm":"", "4pm":"" }, { "day":"Tuesday", "9am":"", "10am":"", "11am":"", "12pm":"", "1pm":"", "2pm":"", "3pm":"", "4pm":"" }, { "day":"Wednesday", "9am":"", "10am":"", "11am":"", "12pm":"", "1pm":"", "2pm":"", "3pm":"", "4pm":"" }, { "day":"Thursday", "9am":"", "10am":"", "11am":"", "12pm":"", "1pm":"", "2pm":"", "3pm":"", "4pm":"" }, { "day":"Friday", "9am":"", "10am":"", "11am":"", "12pm":"", "1pm":"", "2pm":"", "3pm":"", "4pm":"" }];
 }
