@@ -124,7 +124,7 @@
 
 app.controller('myCtrl', function($scope, $rootScope) {
   $rootScope.loggedIn = false;
-
+  
   $scope.user = {
     role: 'public'
   };
@@ -163,12 +163,11 @@ app.controller('timetableCtrl', function ($scope, $rootScope, $route, TimetableS
   $rootScope.users = UserService.getUsers();
   $scope.modules = UserService.getModules();
   $scope.timetable = TimetableService.getTimetable();
-
 });
 
 //the controller to allow logging in fucntionality
 app.controller('loginCtrl', function ($scope, $location, $rootScope, UserService) {
-
+  
 
   $scope.username = "user"; // set so that it is easy to log in for testing
   $scope.password = "pass";
@@ -177,14 +176,15 @@ app.controller('loginCtrl', function ($scope, $location, $rootScope, UserService
     var usrname = $scope.username;
     var pass = $scope.password;
     var users = UserService.getUsers();
+    // UserService.addUsers(users);
     for (x in users) {
       if (users[x].username === $scope.username){
         if(users[x].password === $scope.password){
           var realUser = true;
         }
       }
-    }
-
+    };
+    
     if(realUser) {
       alertify.success("Successfully logged in!");
       $rootScope.username = $scope.username
@@ -379,7 +379,7 @@ app.service('NewModuleService', function (UserService){
 app.service('NewUserService', function (UserService){
   this.registerUser = function(userData) {
     var users = UserService.getUsers() || [];
-    users.push(new User(userData));
+    users.push(new User(userData, users.length));
   }
 });
 
@@ -496,12 +496,17 @@ return api
 app.factory('UserService', ['$http', '$rootScope', function ($http, $rootScope){
   $rootScope.users = [];
   $rootScope.modules = [];
-  $http.get('users.json').success(function(userData){
+  $http.get('/api/users').success(function(userData){
     userData.forEach(function(data){
       $rootScope.users.push(new User(data));
     });
   })
+
   var api = {
+    addUsers : function() {
+      debugger;
+          return $http.post('/api/users', $rootScope.users)
+     },
     getUsers : function() {
      return $rootScope.users;
    },
@@ -514,12 +519,12 @@ app.factory('UserService', ['$http', '$rootScope', function ($http, $rootScope){
     $rootScope.modules = user.modules;
     return $rootScope.modules
   }
-}
+} 
 return api
 }]);
 
 // a model of the user object
-function User(data) {
+function User(data, usersLength) {
   this.firstName = data.firstName || "",
   this.secondName = data.secondName || "",
   this.email = data.email || "",
