@@ -1,0 +1,6 @@
+BUG 1
+
+when signing up as a new user:
+user is created and added to the database but on first log in
+they cannot see anything and the home page breaks. Upon logging back in 
+everything works as it should.

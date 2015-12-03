@@ -210,7 +210,7 @@ app.controller('dashboardCtrl', function ($scope, $rootScope, $location, UserSer
   $scope.$route = $route;
   var username = $rootScope.username;
   $scope.modules = UserService.getModules();
-
+  debugger;
   $scope.users = UserService.getUsers()
   for (x in $scope.users){
     if ($scope.users[x].username === $rootScope.username){
@@ -247,7 +247,10 @@ app.controller('dashboardCtrl', function ($scope, $rootScope, $location, UserSer
 
   $scope.confirmDelete = function(index) {
     if ($scope.users[index].state == "deleted") {
-      $scope.users.splice(index, 1);       
+      UserService.deleteUser($scope.users[index]._id)
+      .success(function() {
+        $scope.users.splice(index, 1);
+      });
     }
   }
 
@@ -381,8 +384,8 @@ app.service('NewUserService', function (UserService, $http){
     UserService.addUser(userData)
     .success(function(userData) {
       var users = UserService.getUsers() || [];
-      var user = new User(userData)
-      users.push(user);
+      //var user = new User(userData)
+      users.push(userData);
     });
   }
 });
@@ -502,7 +505,7 @@ app.factory('UserService', ['$http', '$rootScope', function ($http, $rootScope){
   $rootScope.modules = [];
   $http.get('/api/users').success(function(userData){
     userData.forEach(function(data){
-      $rootScope.users.push(new User(data));
+      $rootScope.users.push(data);
     });
   })
 
@@ -513,8 +516,11 @@ app.factory('UserService', ['$http', '$rootScope', function ($http, $rootScope){
     addUser : function(user) {
       return $http.post('/api/users', user)
     },
+    deleteUser : function(userID) {
+      return $http.delete('/api/users/'+ userID)
+    },
     getUsers : function() {
-     return $rootScope.users;
+     return $rootScope.users
    },
    getModules : function() {
     for (x in $rootScope.users){
