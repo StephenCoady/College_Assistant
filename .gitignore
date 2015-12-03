@@ -1,1 +1,4 @@
 firebase.json
+/public/support/files/*.jpg
+/public/support/files/*.png
+/database
