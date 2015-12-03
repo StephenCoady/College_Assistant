@@ -25,7 +25,7 @@ var mongoose = require('mongoose')
       username: { type: String, required: true },
       password: { type: String, required: true },
       age: { type: String, required: true },
-      course: { type: String, required: true },
+      course: { type: String, required: false },
       modules: [ModuleSchema]
     });
 

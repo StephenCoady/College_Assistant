@@ -376,10 +376,14 @@ app.service('NewModuleService', function (UserService){
 });
 
 // a service to create a user
-app.service('NewUserService', function (UserService){
+app.service('NewUserService', function (UserService, $http){
   this.registerUser = function(userData) {
-    var users = UserService.getUsers() || [];
-    users.push(new User(userData, users.length));
+    UserService.addUser(userData)
+    .success(function(userData) {
+      var users = UserService.getUsers() || [];
+      var user = new User(userData)
+      users.push(user);
+    });
   }
 });
 
@@ -504,9 +508,11 @@ app.factory('UserService', ['$http', '$rootScope', function ($http, $rootScope){
 
   var api = {
     addUsers : function() {
-      debugger;
-          return $http.post('/api/users', $rootScope.users)
-     },
+      return $http.post('/api/users', $rootScope.users)
+    },
+    addUser : function(user) {
+      return $http.post('/api/users', user)
+    },
     getUsers : function() {
      return $rootScope.users;
    },
@@ -524,7 +530,7 @@ return api
 }]);
 
 // a model of the user object
-function User(data, usersLength) {
+function User(data) {
   this.firstName = data.firstName || "",
   this.secondName = data.secondName || "",
   this.email = data.email || "",

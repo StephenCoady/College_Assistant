@@ -16,7 +16,7 @@ function handleError(res, err) {
       });
     } ;
 
-    // Creates a new user in datastore.
+    // Creates a new user in database.
     exports.create = function(req, res) {
       User.create(req.body, function(err, user) {
         if(err) { return handleError(res, err); }
@@ -24,7 +24,7 @@ function handleError(res, err) {
       });
     };
 
-// Update an existing user in datastore.
+// Update an existing user in database.
     exports.update = function(req, res) {
        User.findById(req.params.id, function (err, user) {
             user.name = req.body.name
@@ -37,7 +37,7 @@ function handleError(res, err) {
         });
      }
 
-// Deletes a customer from datastore.
+// Deletes a customer from database.
     exports.destroy = function(req, res) {
         User.findById(req.params.id, function (err, user) {
             user.remove(function (err) {
