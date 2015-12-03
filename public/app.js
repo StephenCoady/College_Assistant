@@ -169,8 +169,8 @@ app.controller('timetableCtrl', function ($scope, $rootScope, $route, TimetableS
 app.controller('loginCtrl', function ($scope, $location, $rootScope, UserService) {
   
 
-  $scope.username = "user"; // set so that it is easy to log in for testing
-  $scope.password = "pass";
+  $scope.username = "admin"; // set so that it is easy to log in for testing
+  $scope.password = "admin";
   
   $scope.submit = function(){
     var usrname = $scope.username;
@@ -208,9 +208,9 @@ app.controller('loginCtrl', function ($scope, $location, $rootScope, UserService
 //controls the dashboard. most of this controller is utilised by the admin account.
 app.controller('dashboardCtrl', function ($scope, $rootScope, $location, UserService, $route) {
   $scope.$route = $route;
+  debugger;
   var username = $rootScope.username;
   $scope.modules = UserService.getModules();
-  debugger;
   $scope.users = UserService.getUsers()
   for (x in $scope.users){
     if ($scope.users[x].username === $rootScope.username){
@@ -259,7 +259,10 @@ app.controller('dashboardCtrl', function ($scope, $rootScope, $location, UserSer
  }
 
  $scope.saveUser = function(user) {
-  user.state = "normal";
+  UserService.updateUser(user)
+    .success(function() {
+      user.state = "normal";
+    });
 }
 
 $scope.cancelEdit = function (user) {
@@ -521,6 +524,9 @@ app.factory('UserService', ['$http', '$rootScope', function ($http, $rootScope){
     },
     getUsers : function() {
      return $rootScope.users
+   },
+   updateUser : function(user) {
+     return $http.put('/api/users/' + user._id , user)
    },
    getModules : function() {
     for (x in $rootScope.users){

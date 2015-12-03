@@ -27,9 +27,13 @@ function handleError(res, err) {
 // Update an existing user in database.
     exports.update = function(req, res) {
        User.findById(req.params.id, function (err, user) {
-            user.name = req.body.name
-            user.address = req.body.address
-            user.phone_number = req.body.phone_number
+            user.firstName = req.body.firstName
+            user.secondName = req.body.secondName
+            user.email = req.body.email
+            user.username = req.body.username
+            user.password = req.body.password
+            user.age = req.body.age
+            user.course = req.body.course
             user.save(function (err) {
                 if(err) { return handleError(res, err); }
                 return res.send(200, 'Update successful');
