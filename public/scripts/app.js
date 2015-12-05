@@ -7,8 +7,6 @@
 
  var app = angular.module('collegeApp', ['ngRoute'])
 
-
-
  app.config(['$routeProvider',
   function ($routeProvider, $rootScope) {
     $routeProvider
