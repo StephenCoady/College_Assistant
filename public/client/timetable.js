@@ -4,7 +4,7 @@ var app = angular.module('collegeApp')
 app.controller('timetableCtrl', function ($scope, $rootScope, $route, TimetableService, UserService) {
   $scope.$route = $route;
   $rootScope.users = UserService.getUsers();
-  $scope.modules = UserService.getModules();
+  $scope.modules = UserService.getModules($rootScope.user);
   $scope.timetable = TimetableService.getTimetable();
 });
 
@@ -13,12 +13,7 @@ app.factory('TimetableService', ['$http', '$rootScope', '$routeParams', function
   $rootScope.timetable = [];
   var api = {
    getTimetable : function() {
-    for (x in $rootScope.users){
-      if ($rootScope.users[x].username === $rootScope.username){
-        var user = $rootScope.users[x];
-      }
-    }
-    $rootScope.timetable = user.timetable;
+    $rootScope.timetable = $rootScope.user.timetable;
     return $rootScope.timetable;
   }
 }

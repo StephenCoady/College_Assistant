@@ -56,7 +56,7 @@ app.controller('profileCtrl', function ($scope, $rootScope, $route, UserService)
 
   var users = UserService.getUsers()
   for (x in users){
-    if (users[x].username === $rootScope.username){
+    if (users[x].username === $rootScope.user.username){
       $scope.user = users[x];
     }
   }
@@ -111,17 +111,14 @@ app.factory('UserService', ['$http', '$rootScope', function ($http, $rootScope){
     updateUser : function(user) {
       return $http.put('/api/users/' + user._id , user)
     },
-    getModules : function() {
-      for (x in $rootScope.users){
-        if ($rootScope.users[x].username === $rootScope.username){
-          var user = $rootScope.users[x];
-        }
-      }
-      $rootScope.modules = user.modules;
-      return $rootScope.modules
+    getModules : function(user) {
+      return user.modules
     },
     addModule : function(user, module) {
-      return $http.post('/api/users/' + user._id, module)
+      return $http.put('/api/users/' + user._id +'/addToUser', module)
+    },
+    deleteModule : function(user, module) {
+      return $http.delete('/api/users/' + user._id + '/deleteFromUser/' + module._id)
     }
   } 
   return api

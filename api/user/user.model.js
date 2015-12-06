@@ -13,8 +13,8 @@ var mongoose = require('mongoose')
     });
 
     var ModuleSchema = new Schema({
-      id: { type: String, required: true } ,
       title: { type: String, required: true } ,
+      lecturer: { type : String, require: true} ,
       assignments: [AssignmentSchema]
     }); 
 

@@ -14,7 +14,7 @@ app.controller('allModuleCtrl',
         $scope.loggedInUser = users[x];
       }
     }
-    $scope.modules = ModuleService.getModules();
+    $scope.modules = UserService.getModules($rootScope.user);
 
     //creates a new module using the NewModuleService
     $scope.newModule = function (){
@@ -25,28 +25,26 @@ app.controller('allModuleCtrl',
 
     //delete a module
     $scope.confirmDelete = function(index){
+      var module = $scope.modules[index]
       alertify.error("Successfully deleted module: " + $scope.modules[index].title);
       delete $scope.modules[index];
+      ModuleService.deleteModule(module);
+      UserService.deleteModule($rootScope.user, module);
     }
   });
 
 // a controller which manages a detailed view of a module
 app.controller('moduleCtrl', 
   function ($scope, $rootScope, $routeParams, UserService, NewAssignmentService) {
-   var users = UserService.getUsers();
-   for (x in users){
-     if (users[x].username === $rootScope.username){
-      $scope.modules = users[x].modules;
-      console.log($scope.modules)
-      for (y in $scope.modules){
-        if ($scope.modules[y]._id === $routeParams.moduleId){
-          $scope.module = $scope.modules[y];
-        }
+
+    $scope.modules = $rootScope.user.modules;
+    for (y in $scope.modules){
+      if ($scope.modules[y]._id === $routeParams.moduleId){
+        $scope.module = $scope.modules[y];
       }
     }
-  }
-  $rootScope.module = $scope.module;
-  $scope.assignments = $scope.module.assignments;
+    $rootScope.module = $scope.module;
+    $scope.assignments = $scope.module.assignments;
 
   // to create a new assignment in a module
   $scope.newAssignment = function (){
@@ -82,33 +80,28 @@ app.factory('ModuleService', ['$http', '$rootScope', function ($http, $rootScope
     addModule : function(module) {
       return $http.post('/api/modules', module)
     },
-    deleteModule : function(moduleID) {
-      return $http.delete('/api/modules/'+ moduleID)
+    deleteModule : function(module) {
+      return $http.delete('/api/modules/'+ module._id)
     },
     updateModule : function(module) {
       return $http.put('/api/modules/' + module._id , module)
     },
-    getModules : function() {
-      // for (x in $rootScope.users){
-      //   if ($rootScope.users[x].username === $rootScope.username){
-      //     var user = $rootScope.users[x];
-      //   }
-      // }
-      $rootScope.modules = $rootScope.user.modules;
-      return $rootScope.modules
+    getModules : function(user) {
+      return user.modules
     }
   } 
   return api
 }]);
 
 //a service to create a new module and push it to a user's arrray of modules
-app.service('NewModuleService', function (UserService, ModuleService){
+app.service('NewModuleService', function (UserService, ModuleService, $rootScope){
   this.newModule = function(moduleData) {
     ModuleService.addModule(moduleData)
     .success(function(moduleData) {
-    var modules = ModuleService.getModules() || [];
-    modules.push(moduleData);
-  })
+      UserService.addModule($rootScope.user, moduleData)
+      var modules = ModuleService.getModules($rootScope.user) || [];
+      modules.push(moduleData);
+    })
   }
 });
 

@@ -7,7 +7,7 @@ app.controller('allAssignCtrl',
     $scope.$route = $route;
     var modules = [];
     $scope.modules = [];
-    modules = UserService.getModules();
+    modules = UserService.getModules($rootScope.user);
     var assignments = [];
     for (x in modules){
       for (y in modules[x].assignments){
@@ -23,7 +23,7 @@ app.controller('allAssignCtrl',
 // a service to create the new assignment. called from the moduleCtrl controller
 app.service('NewAssignmentService', function (AssignmentService, $rootScope, UserService, $routeParams){
   $rootScope.users = UserService.getUsers();
-  $rootScope.modules = UserService.getModules();
+  $rootScope.modules = UserService.getModules($rootScope.user);
   this.newAssignment = function(assignmentData) {
     var assignments = AssignmentService.getAssignments() || [];
     assignments.push(new Assignment(assignmentData, assignments.length, $routeParams.moduleId));

@@ -6,8 +6,34 @@ var User = require('./user.model');
 
 function handleError(res, err) {
       return res.send(500, err);
-    }
+    };
 
+    exports.getModules = function(req, res) {
+      User.findById(req.params.id, function (err, user){
+        if(err) { return handleError(res, err); }
+        return res.json(201, user);
+      })
+    };
+
+    exports.addToUser = function(req, res) {
+      User.findById(req.params.id, function (err, user){
+        user.modules.push(req.body)
+        user.save(function (err) {
+                if(err) { return handleError(res, err); }
+                return res.send(200, 'Update successful');
+            });
+      })
+    };
+
+    exports.deleteFromUser = function(req, res) {
+      User.findById(req.params.id, function (err, user){
+        user.modules.id(req.params.modId).remove()
+        user.save(function (err) {
+                if(err) { return handleError(res, err); }
+                return res.send(200, 'Delete of module successful');
+            });
+      })
+    };
     // Get list of users
     exports.index = function(req, res) {
       User.find(function (err, users) {
@@ -51,7 +77,7 @@ function handleError(res, err) {
         })
     }
 
-exports.show = function(req, res) {
+    exports.show = function(req, res) {
       User.findById(req.params.id, function (err, user) {
         if(err) { return handleError(res, err); }
         return res.json(200, user);

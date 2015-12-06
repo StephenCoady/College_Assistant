@@ -39,7 +39,7 @@ function handleError(res, err) {
 // Deletes a module from database.
     exports.destroy = function(req, res) {
         Module.findById(req.params.id, function (err, module) {
-            user.remove(function (err) {
+            module.remove(function (err) {
                 if(err) { return handleError(res, err); }
                 return res.send(200,'Deleted');
             });
@@ -49,6 +49,6 @@ function handleError(res, err) {
 exports.show = function(req, res) {
       Module.findById(req.params.id, function (err, module) {
         if(err) { return handleError(res, err); }
-        return res.json(200, user);
+        return res.json(200, module);
       });
     } ;

@@ -4,7 +4,6 @@ var app = angular.module('collegeApp')
 app.controller('dashboardCtrl', function ($scope, $rootScope, $location, UserService, $route) {
   $scope.$route = $route;
   var username = $rootScope.username;
-  $scope.modules = UserService.getModules();
   $scope.users = UserService.getUsers()
   for (x in $scope.users){
     if ($scope.users[x].username === $rootScope.username){
@@ -12,12 +11,12 @@ app.controller('dashboardCtrl', function ($scope, $rootScope, $location, UserSer
       $rootScope.user = $scope.users[x];
     }
   }
-
+  $scope.modules = UserService.getModules($rootScope.user);
   $scope.assignCount = 0;
 
-  for (x in $scope.loggedInUser.modules){
-    for (y in $scope.loggedInUser.modules[x].assignments){
-      if(!$scope.loggedInUser.modules[x].assignments[y].complete){
+  for (x in $rootScope.user.modules){
+    for (y in $rootScope.user.modules[x].assignments){
+      if(!$rootScope.user.modules[x].assignments[y].complete){
         $scope.assignCount += 1;
       }
     }
