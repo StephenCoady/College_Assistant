@@ -4,3 +4,9 @@ when signing up as a new user:
 user is created and added to the database but on first log in
 they cannot see anything and the home page breaks. Upon logging back in 
 everything works as it should.
+
+BUG 2
+
+when signing up as a new user:
+user is created and added to the database but on first log in they cannot create modules
+this is because they do not yet have an ._id from the database
