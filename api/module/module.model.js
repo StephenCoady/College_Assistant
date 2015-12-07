@@ -7,7 +7,6 @@ var mongoose = require('mongoose')
       snippet: { type: String, required: true } ,
       date: { type: String, required: true } ,
       moduleId: { type: String, required: true } ,
-      id: { type: String, required: true } ,
       complete: { type: Boolean, required: true } ,
       details: { type: String, required: true }
     });

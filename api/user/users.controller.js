@@ -24,6 +24,39 @@ function handleError(res, err) {
             });
       })
     };
+    exports.addAssign = function(req, res) {
+      User.findById(req.params.id, function (err, user){
+        user.modules.id(req.params.modId).assignments.push(req.body)
+        user.save(function (err) {
+          if(err) {return handleError(res, err); }
+          return res.send(200, 'Assignment added to users module');
+        });
+      })
+    };
+
+    exports.updateAssign = function(req, res) {
+      User.findById(req.params.id, function (err, user){
+        user.modules.id(req.params.modId).assignments.id(req.params.assignId).title = req.body.title
+        user.modules.id(req.params.modId).assignments.id(req.params.assignId).snippet = req.body.snippet
+        user.modules.id(req.params.modId).assignments.id(req.params.assignId).date = req.body.date
+        user.modules.id(req.params.modId).assignments.id(req.params.assignId).complete = req.body.complete
+        user.modules.id(req.params.modId).assignments.id(req.params.assignId).details = req.body.details
+        user.save(function (err) {
+                if(err) { return handleError(res, err); }
+                return res.send(200, 'Update successful');
+            });
+      })
+    };
+
+    exports.deleteAssign = function(req, res) {
+      User.findById(req.params.id, function (err, user){
+        user.modules.id(req.params.modId).assignments.id(req.params.assignId).remove()
+        user.save(function (err) {
+                if(err) { return handleError(res, err); }
+                return res.send(200, 'Delete of assignment successful');
+            });
+      })
+    };
 
     exports.deleteFromUser = function(req, res) {
       User.findById(req.params.id, function (err, user){

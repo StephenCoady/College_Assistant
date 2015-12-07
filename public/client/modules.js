@@ -35,7 +35,7 @@ app.controller('allModuleCtrl',
 
 // a controller which manages a detailed view of a module
 app.controller('moduleCtrl', 
-  function ($scope, $rootScope, $routeParams, UserService, NewAssignmentService) {
+  function ($scope, $rootScope, $routeParams, UserService, NewAssignmentService, AssignmentService) {
 
     $scope.modules = $rootScope.user.modules;
     for (y in $scope.modules){
@@ -63,6 +63,9 @@ app.controller('moduleCtrl',
       $scope.assignments[index].complete = true;
       alertify.success("Whoop, complete!");
     }
+    var assignment = $scope.assignments[index];
+    AssignmentService.updateAssignment(assignment);
+    UserService.updateAssignment($rootScope.user, assignment)
   }
 });
 

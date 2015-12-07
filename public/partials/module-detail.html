@@ -15,10 +15,10 @@
           </thead>
           <tbody ng-repeat="assignment in assignments">
             <tr ng-if="!assignment.complete">
-              <td><a href="#/modules/{{module._id}}/{{assignment.id}}">{{ assignment.title }}</a></td>
+              <td><a href="#/modules/{{module._id}}/{{assignment._id}}">{{ assignment.title }}</a></td>
               <td>{{ assignment.date }}</td>
               <td><button type="submit" class="btn btn-success btn-xs" ng-click="changeAssignment($index)"><span class="glyphicon glyphicon-ok"></span> </button></td>
-              <td><a href="#/modules/{{module._id}}/{{assignment.id}}" class="btn btn-info btn-xs"><span class="glyphicon glyphicon-pencil"></span></a></td>
+              <td><a href="#/modules/{{module._id}}/{{assignment._id}}" class="btn btn-info btn-xs"><span class="glyphicon glyphicon-pencil"></span></a></td>
             </tr>
           </tbody>
         </table>
@@ -33,7 +33,7 @@
           </thead>
           <tbody ng-repeat="assignment in assignments">
             <tr ng-if="assignment.complete">
-              <td><a href="#/modules/{{module._id}}/{{assignment.id}}">{{ assignment.title }}</a></td>
+              <td><a href="#/modules/{{module._id}}/{{assignment._id}}">{{ assignment.title }}</a></td>
               <td>{{ assignment.date }}</td>
               <td><button type="submit" class="btn btn-info btn-xs" ng-click="changeAssignment($index)"><span class="glyphicon glyphicon-remove"></span> </button></td>
             </tr>

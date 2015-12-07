@@ -25,32 +25,41 @@ app.service('NewAssignmentService', function (AssignmentService, $rootScope, Use
   $rootScope.users = UserService.getUsers();
   $rootScope.modules = UserService.getModules($rootScope.user);
   this.newAssignment = function(assignmentData) {
-    var assignments = AssignmentService.getAssignments() || [];
-    assignments.push(new Assignment(assignmentData, assignments.length, $routeParams.moduleId));
+    assignmentData.moduleId = $routeParams.moduleId;
+    assignmentData.complete = false;
+    AssignmentService.addAssignment(assignmentData)
+    .success(function(assignmentData) {
+      UserService.addAssignment($rootScope.user, assignmentData.moduleId, assignmentData)
+      var assignments = AssignmentService.getAssignments() || [];
+      assignments.push(assignmentData);
+    })
   }
 });
 
 // controls the assignment detail view. lists assignments and provides functionality to alter them 
-app.controller('assignCtrl', function ($scope, $rootScope, $routeParams, UserService) {
- var users = UserService.getUsers();
- $scope.users = UserService.getUsers();
- for (x in $scope.users){
-   if ($scope.users[x].username === $rootScope.username){
-    $scope.modules = $scope.users[x].modules;
-    for (y in $scope.modules){
-      if ($scope.modules[y].id === $routeParams.moduleId){
-        $scope.assignments = $scope.modules[y].assignments;
-        $scope.module = $scope.modules[y];
-        $scope.assignment = $scope.assignments[$routeParams.assignId-1];
+app.controller('assignCtrl', function ($scope, $rootScope, $routeParams, UserService, AssignmentService) {
+
+
+  var modules = $rootScope.user.modules;
+  for (y in modules){
+    if (modules[y]._id === $routeParams.moduleId){
+      var assignments =  modules[y].assignments;
+      for (x in assignments){
+        if (assignments[x]._id === $routeParams.assignId){
+          $scope.assignment = assignments[x];
+        }
       }
     }
   }
-}
 
-$scope.editAssignment = function (assignment){
-  $scope.assignment = assignment;
-  alertify.success("Assignment Updated!")
-}
+
+  $scope.editAssignment = function (assignment){
+    $scope.assignment = assignment;
+    debugger;
+    AssignmentService.updateAssignment(assignment);
+    UserService.updateAssignment($rootScope.user, assignment)
+    alertify.success("Assignment Updated!")
+  }
 });
 
 // a factory service to return all assignments currently belonging to a specific module.
@@ -60,25 +69,30 @@ app.factory('AssignmentService', ['$http', '$rootScope', '$routeParams', functio
   var api = {
     getAssignments : function() {
       for (y in $rootScope.modules){
-        if ($rootScope.modules[y].id === $routeParams.moduleId){
+        if ($rootScope.modules[y]._id === $routeParams.moduleId){
           var module = $rootScope.modules[y];
           // $rootScope.module = module;
         }
       }
       $rootScope.assignments = module.assignments;
       return $rootScope.assignments;
+    },
+    addAssignment : function(assignment) {
+      return $http.post('/api/assignments', assignment)
+    },
+    updateAssignment : function(assignment) {
+      return $http.put('/api/assignments/' + assignment._id, assignment)
     }
   }
   return api;
 }]);
 
 // a model of the assignment object
-function Assignment(data, assignmentsLength, moduleId) {
+function Assignment(data, moduleId) {
   this.title = data.title || "",
   this.snippet = data.snippet || "",
   this.date = data.date || "",
   this.moduleId = moduleId || "",
-  this.complete = data.complete || false,
-  this.id = (assignmentsLength+1).toString() || "",
+  this.complete = false,
   this.details = data.details || ""
 }

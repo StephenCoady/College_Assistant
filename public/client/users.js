@@ -114,6 +114,12 @@ app.factory('UserService', ['$http', '$rootScope', function ($http, $rootScope){
     },
     deleteModule : function(user, module) {
       return $http.delete('/api/users/' + user._id + '/deleteFromUser/' + module._id)
+    },
+    addAssignment : function(user, moduleId, assignment) {
+      return $http.post('/api/users/' + user._id + '/' + moduleId + '/addAssign', assignment)
+    },
+    updateAssignment : function(user, assignment) {
+      return $http.put('/api/users/' + user._id + '/' + assignment.moduleId + '/updateAssign/' + assignment._id, assignment)
     }
   } 
   return api
