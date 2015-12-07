@@ -54,12 +54,7 @@ app.controller('NewUserController', function ($scope, NewUserService, $location,
 app.controller('profileCtrl', function ($scope, $rootScope, $route, UserService) {
   $scope.$route = $route;
 
-  var users = UserService.getUsers()
-  for (x in users){
-    if (users[x].username === $rootScope.user.username){
-      $scope.user = users[x];
-    }
-  }
+  $scope.user = $rootScope.user
 
   $scope.editUser = function (user){
     UserService.updateUser(user)
