@@ -3,12 +3,12 @@ var mongoose = require('mongoose')
 
 
     var AssignmentSchema = new Schema({
-      title: { type: String, required: true } ,
-      snippet: { type: String, required: true } ,
-      date: { type: String, required: true } ,
+      title: { type: String} ,
+      snippet: { type: String} ,
+      date: { type: String} ,
       moduleId: { type: String, required: true } ,
       complete: { type: Boolean, required: true } ,
-      details: { type: String, required: true }
+      details: { type: String}
     });
 
     var ModuleSchema = new Schema({
