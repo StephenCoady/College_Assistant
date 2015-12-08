@@ -15,6 +15,17 @@ exports.getModules = function(req, res) {
   })
 };
 
+exports.login = function(req, res) {
+  User.findOne({username : req.query.username}, function(err, user){
+    if(user.password === req.query.password){
+      return res.json(200, "Found!");
+    }
+    else{
+      return res.json(404, "Not found");
+    }
+  })
+};
+
 exports.addToUser = function(req, res) {
   User.findById(req.params.id, function (err, user){
     user.modules.push(req.body)

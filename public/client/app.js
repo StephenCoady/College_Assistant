@@ -147,16 +147,8 @@ app.controller('loginCtrl', function ($scope, $location, $rootScope, UserService
     var usrname = $scope.username;
     var pass = $scope.password;
     var users = UserService.getUsers();
-    // UserService.addUsers(users);
-    for (x in users) {
-      if (users[x].username === $scope.username){
-        if(users[x].password === $scope.password){
-          var realUser = true;
-        }
-      }
-    };
-    
-    if(realUser) {
+    UserService.login(usrname, pass)
+    .success(function(res){
       alertify.success("Successfully logged in!");
       $rootScope.username = $scope.username
       $rootScope.loggedIn = true;
@@ -165,12 +157,10 @@ app.controller('loginCtrl', function ($scope, $location, $rootScope, UserService
 
         $scope.user.role = 'admin';
       }
-
-
-    } else {
+    })
+    .error(function(res){
       alertify.error("Incorrect username or password.");
-    }
-
+    })
   };
 
 });

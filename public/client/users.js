@@ -27,6 +27,9 @@ app.factory('UserService', ['$http', '$rootScope', function ($http, $rootScope){
   })
 
   var api = {
+    login : function(username, password) {
+      return $http.get('/api/users/login', {params:{"username": username, "password": password}})
+    },
     addUsers : function() {
       return $http.post('/api/users', $rootScope.users)
     },

@@ -4,8 +4,9 @@ var controller = require('./users.controller');
 var router = express.Router();
 
 router.get('/', controller.index);
+router.get('/login?:params', controller.login);
 router.get('/:id', controller.show);
-router.get('/age/:delim/:age', controller.getAges)
+router.get('/age/:delim/:age', controller.getAges);
 router.post('/', controller.create);
 router.put('/:id/addToUser', controller.addToUser);
 router.post('/:id/:modId/addAssign', controller.addAssign);
