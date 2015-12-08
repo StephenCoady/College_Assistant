@@ -55,3 +55,24 @@ exports.show = function(req, res) {
     return res.json(200, assignment);
   });
 } ;
+
+exports.getComplete = function(req, res) {
+      var delimeter = req.params.delim;
+      if (delimeter === 'true'){
+        var query = Assignment.where('complete', true)
+        query.exec(function (err, users){
+          if(err) { return handleError(res, err); }
+          return res.json(200, users);
+        })
+      }
+      else if(delimeter === 'false'){
+        var query = Assignment.where('complete', false)
+        query.exec(function (err, users){
+          if(err) { return handleError(res, err); }
+          return res.json(200, users);
+        })
+      }
+      else{
+        return res.json(404, "No such records found")
+      }
+    }

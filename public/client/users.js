@@ -1,54 +1,5 @@
 var app = angular.module('collegeApp');
 
-// a contoller which handles the signing up of new users.
-app.controller('NewUserController', function ($scope, NewUserService, $location, $rootScope, UserService){
-
-  $scope.registerUser = function() {
-    var users = UserService.getUsers();
-    var signup = true; // if this variable is still true by the end of this function, then the user may sign up
-
-    if($scope.user.firstName === undefined || 
-      $scope.user.secondName === undefined ||
-      $scope.user.age === undefined ||
-      $scope.user.email === undefined ||
-      $scope.user.username === undefined ||
-      $scope.user.password === undefined ||
-      $scope.user.password2 === undefined
-      )
-    {
-      alertify.error("Sorry, all fields must be filled in.")
-      signup = false;
-    }
-
-    for (x in users){
-      if (users[x].username === $scope.user.username){
-        alertify.error("Sorry, that username is already taken.")
-        signup = false;
-        break;
-      }
-      if ($scope.user.password !== $scope.user.password2){
-        alertify.error("Sorry, your passwords must match.")
-        signup = false;
-        break;
-      }
-      if (users[x].email === $scope.user.email){
-        alertify.error("Sorry, that email is already in use.")
-        signup = false;
-        break;
-      }
-    }
-    if (signup) {
-      NewUserService.registerUser($scope.user);
-      users.push($scope.user);
-      alertify.success("Welcome, " + $scope.user.firstName + "!");
-      $rootScope.username = $scope.user.username;
-      $scope.user = new User({});
-      $rootScope.loggedIn = true;
-      $location.path('/dashboard');
-    }
-
-  }
-});
 
 //the controller for the user's profile page
 app.controller('profileCtrl', function ($scope, $rootScope, $route, UserService) {
@@ -61,18 +12,6 @@ app.controller('profileCtrl', function ($scope, $rootScope, $route, UserService)
     .success(function() {
       $scope.user = user;
       alertify.success("Information Updated!")
-    });
-  }
-});
-
-// a service to create a user
-app.service('NewUserService', function (UserService, $http){
-  this.registerUser = function(userData) {
-    UserService.addUser(userData)
-    .success(function(userData) {
-      var users = UserService.getUsers() || [];
-      //var user = new User(userData)
-      users.push(userData);
     });
   }
 });

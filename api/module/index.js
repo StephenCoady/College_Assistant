@@ -5,6 +5,7 @@ var router = express.Router();
 
 router.get('/', controller.index);
 router.get('/:id', controller.show);
+router.get('/complete/:delim')
 router.post('/', controller.create);
 router.put('/:id', controller.update);
 router.delete('/:id', controller.destroy);

@@ -138,7 +138,7 @@ app.controller('myCtrl', function($scope, $rootScope) {
 
 //the controller to allow logging in fucntionality
 app.controller('loginCtrl', function ($scope, $location, $rootScope, UserService) {
-  
+
 
   $scope.username = "user"; // set so that it is easy to log in for testing
   $scope.password = "pass";
@@ -173,4 +173,63 @@ app.controller('loginCtrl', function ($scope, $location, $rootScope, UserService
 
   };
 
+});
+
+// a contoller which handles the signing up of new users.
+app.controller('NewUserController', function ($scope, NewUserService, $location, $rootScope, UserService){
+
+  $scope.registerUser = function() {
+    var users = UserService.getUsers();
+    var signup = true; // if this variable is still true by the end of this function, then the user may sign up
+
+    if ($scope.user.password !== $scope.user.password2){
+      alertify.error("Sorry, your passwords must match.")
+      signup = false;
+    }
+
+    if (signup) {
+      if(NewUserService.registerUser($scope.user) === true){
+        users.push($scope.user);
+        alertify.success("Welcome, " + $scope.user.firstName + "!");
+        $rootScope.username = $scope.user.username;
+        $scope.user = new User({});
+        $rootScope.loggedIn = true;
+        $location.path('/dashboard');
+      }
+    }
+
+  }
+});
+
+// a service to create a user
+app.service('NewUserService', function (UserService, $http){
+  this.registerUser = function(userData) {
+    UserService.addUser(userData)
+    .success(function(userData) {
+      var users = UserService.getUsers() || [];
+      users.push(userData);
+      return true;
+    })
+    .error(function(error) {
+      if(error.name === 'MongoError'){
+        if(error.err.indexOf('email') > -1){
+          alertify.error('Email is already used!')
+        }
+      }
+      if(error.name === 'MongoError'){
+        if(error.err.indexOf('username') > -1){
+          alertify.error('Username is taken!')
+        }
+      }
+      if(error.name === 'ValidationError'){
+        if(error.errors.password!= undefined){
+          alertify.error(error.errors.password.message)
+        }
+        else{
+          alertify.error("Please ensure all fields are filled in!")
+        }
+      }
+      return false;
+    });
+  }
 });

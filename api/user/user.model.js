@@ -20,9 +20,21 @@ var mongoose = require('mongoose')
     var UserSchema = new Schema({
       firstName: { type: String, required: true } ,
       secondName: { type: String, required: true } ,
-      email: { type: String, required: true },
-      username: { type: String, required: true },
-      password: { type: String, required: true },
+      email: { type: String, required: true, unique: true },
+      username: { 
+        type: String, 
+        required: true,
+        unique: true 
+      },
+      password: { 
+        type: String, 
+        validate: [
+          function(password) {
+            return password.length >= 4;
+          },
+          'Password should be longer'
+        ]
+      },
       age: { type: String, required: true },
       course: { type: String, required: false },
       modules: [ModuleSchema]
