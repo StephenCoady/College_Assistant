@@ -84,26 +84,29 @@ exports.deleteFromUser = function(req, res) {
           return res.json(200, users);
         })
       }
-      if (delimeter === 'lt'){
+      else if (delimeter === 'lt'){
         var query = User.where('age').lt(req.params.age)
         query.exec(function (err, users){
           if(err) { return handleError(res, err); }
           return res.json(200, users);
         })
       }
-      if (delimeter === 'gte'){
+      else if (delimeter === 'gte'){
         var query = User.where('age').gte(req.params.age)
         query.exec(function (err, users){
           if(err) { return handleError(res, err); }
           return res.json(200, users);
         })
       }
-      if (delimeter === 'lte'){
+      else if (delimeter === 'lte'){
         var query = User.where('age').lte(req.params.age)
         query.exec(function (err, users){
           if(err) { return handleError(res, err); }
           return res.json(200, users);
         })
+      }
+      else{
+        return res.json(404, "No such records found")
       }
     }
 
