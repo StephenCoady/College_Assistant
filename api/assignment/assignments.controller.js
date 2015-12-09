@@ -60,16 +60,16 @@ exports.getComplete = function(req, res) {
       var delimeter = req.params.delim;
       if (delimeter === 'true'){
         var query = Assignment.where('complete', true)
-        query.exec(function (err, users){
+        query.exec(function (err, assignments){
           if(err) { return handleError(res, err); }
-          return res.json(200, users);
+          return res.json(200, assignments);
         })
       }
       else if(delimeter === 'false'){
         var query = Assignment.where('complete', false)
-        query.exec(function (err, users){
+        query.exec(function (err, assignments){
           if(err) { return handleError(res, err); }
-          return res.json(200, users);
+          return res.json(200, assignments);
         })
       }
       else{

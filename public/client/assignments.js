@@ -62,31 +62,6 @@ app.controller('assignCtrl', function ($scope, $rootScope, $routeParams, UserSer
   }
 });
 
-// a factory service to return all assignments currently belonging to a specific module.
-app.factory('AssignmentService', ['$http', '$rootScope', '$routeParams', function ($http, $rootScope, $routeParams){
-
-  $rootScope.assignments = [];
-  var api = {
-    getAssignments : function() {
-      for (y in $rootScope.modules){
-        if ($rootScope.modules[y]._id === $routeParams.moduleId){
-          var module = $rootScope.modules[y];
-          // $rootScope.module = module;
-        }
-      }
-      $rootScope.assignments = module.assignments;
-      return $rootScope.assignments;
-    },
-    addAssignment : function(assignment) {
-      return $http.post('/api/assignments', assignment)
-    },
-    updateAssignment : function(assignment) {
-      return $http.put('/api/assignments/' + assignment._id, assignment)
-    }
-  }
-  return api;
-}]);
-
 // a model of the assignment object
 function Assignment(data, moduleId) {
   this.title = data.title || "",

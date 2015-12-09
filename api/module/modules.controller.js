@@ -19,7 +19,9 @@ function handleError(res, err) {
     // Creates a new module in database.
     exports.create = function(req, res) {
       Module.create(req.body, function(err, module) {
-        if(err) { return handleError(res, err); }
+        if(err) { 
+          return handleError(res, err); 
+          }
         return res.json(201, module);
       });
     };

@@ -3,11 +3,17 @@ var mongoose = require('mongoose')
 
 
     var AssignmentSchema = new Schema({
-      title: { type: String} ,
+      title: { 
+        type: String,
+        default: "Unitled Assignment"
+      } ,
       snippet: { type: String} ,
       date: { type: String} ,
       moduleId: { type: String, required: true } ,
-      complete: { type: Boolean, required: true } ,
+      complete: { 
+        type: Boolean,
+        default: false 
+      } ,
       details: { type: String}
     });
 

@@ -16,57 +16,6 @@ app.controller('profileCtrl', function ($scope, $rootScope, $route, UserService)
   }
 });
 
-// a factory service to return either all users or all modules belonging to the currently logged in user
-app.factory('UserService', ['$http', '$rootScope', function ($http, $rootScope){
-  $rootScope.users = [];
-  $rootScope.modules = [];
-  $http.get('/api/users').success(function(userData){
-    userData.forEach(function(data){
-      $rootScope.users.push(data);
-    });
-  })
-
-  var api = {
-    login : function(username, password) {
-      return $http.get('/api/users/login', {params:{"username": username, "password": password}})
-    },
-    addUsers : function() {
-      return $http.post('/api/users', $rootScope.users)
-    },
-    addUser : function(user) {
-      return $http.post('/api/users', user)
-    },
-    deleteUser : function(userID) {
-      return $http.delete('/api/users/'+ userID)
-    },
-    getUsers : function() {
-      return $rootScope.users
-    },
-    getLoggedInUser : function() {
-      return $rootScope.user
-    },
-    updateUser : function(user) {
-      return $http.put('/api/users/' + user._id , user)
-    },
-    getModules : function(user) {
-      return user.modules
-    },
-    addModule : function(user, module) {
-      return $http.put('/api/users/' + user._id +'/addToUser', module)
-    },
-    deleteModule : function(user, module) {
-      return $http.delete('/api/users/' + user._id + '/deleteFromUser/' + module._id)
-    },
-    addAssignment : function(user, moduleId, assignment) {
-      return $http.post('/api/users/' + user._id + '/' + moduleId + '/addAssign', assignment)
-    },
-    updateAssignment : function(user, assignment) {
-      return $http.put('/api/users/' + user._id + '/' + assignment.moduleId + '/updateAssign/' + assignment._id, assignment)
-    }
-  } 
-  return api
-}]);
-
 // a model of the user object
 function User(data) {
   this.firstName = data.firstName || "",

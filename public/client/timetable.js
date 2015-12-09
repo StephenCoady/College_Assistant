@@ -8,18 +8,6 @@ app.controller('timetableCtrl', function ($scope, $rootScope, $route, TimetableS
   $scope.timetable = TimetableService.getTimetable();
 });
 
-// a factory service to get a user's timetable.
-app.factory('TimetableService', ['$http', '$rootScope', '$routeParams', function ($http, $rootScope, $routeParams){
-  $rootScope.timetable = [];
-  var api = {
-   getTimetable : function() {
-    $rootScope.timetable = $rootScope.user.timetable;
-    return $rootScope.timetable;
-  }
-}
-return api
-}]);
-
 // a simple model of the timetable object. by default it is empty on signup
 function Timetable() {
   return [{ "day":"Monday", "9am":"", "10am":"", "11am":"", "12pm":"", "1pm":"", "2pm":"", "3pm":"", "4pm":"" }, { "day":"Tuesday", "9am":"", "10am":"", "11am":"", "12pm":"", "1pm":"", "2pm":"", "3pm":"", "4pm":"" }, { "day":"Wednesday", "9am":"", "10am":"", "11am":"", "12pm":"", "1pm":"", "2pm":"", "3pm":"", "4pm":"" }, { "day":"Thursday", "9am":"", "10am":"", "11am":"", "12pm":"", "1pm":"", "2pm":"", "3pm":"", "4pm":"" }, { "day":"Friday", "9am":"", "10am":"", "11am":"", "12pm":"", "1pm":"", "2pm":"", "3pm":"", "4pm":"" }];

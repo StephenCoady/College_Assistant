@@ -190,36 +190,3 @@ app.controller('NewUserController', function ($scope, NewUserService, $location,
 
   }
 });
-
-// a service to create a user
-app.service('NewUserService', function (UserService, $http){
-  this.registerUser = function(userData) {
-    UserService.addUser(userData)
-    .success(function(userData) {
-      var users = UserService.getUsers() || [];
-      users.push(userData);
-      return true;
-    })
-    .error(function(error) {
-      if(error.name === 'MongoError'){
-        if(error.err.indexOf('email') > -1){
-          alertify.error('Email is already used!')
-        }
-      }
-      if(error.name === 'MongoError'){
-        if(error.err.indexOf('username') > -1){
-          alertify.error('Username is taken!')
-        }
-      }
-      if(error.name === 'ValidationError'){
-        if(error.errors.password!= undefined){
-          alertify.error(error.errors.password.message)
-        }
-        else{
-          alertify.error("Please ensure all fields are filled in!")
-        }
-      }
-      return false;
-    });
-  }
-});

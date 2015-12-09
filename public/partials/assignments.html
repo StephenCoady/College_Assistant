@@ -31,7 +31,7 @@
       <tbody ng-repeat="assignment in assignments | filter:{ title: query, complete: completion} | orderBy:orderProp" >
         <tr ng-if="!modules[moduleId]">
           <td><a href="#/modules/{{assignment.moduleId}}/{{assignment._id}}">{{ assignment.title }}</a></td>
-          <td><a href="#/modules/{{assignment.moduleId}}"> {{ modules[assignment.moduleId].title }}</a></td>
+          <td><a href="#/modules/{{assignment.moduleId}}">View</a></td>
           <td>{{ assignment.date }}</td>
           <td><div ng-if="assignment.complete" class="glyphicon glyphicon-ok"></div>
             <div ng-if="!assignment.complete" class="glyphicon glyphicon-remove"></div></td>
