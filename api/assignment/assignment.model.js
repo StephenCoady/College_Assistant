@@ -5,7 +5,7 @@ var mongoose = require('mongoose')
     var AssignmentSchema = new Schema({
       title: { 
         type: String,
-        default: "Unitled Assignment"
+        default: "Untitled Assignment"
       } ,
       snippet: { type: String} ,
       date: { type: String} ,
